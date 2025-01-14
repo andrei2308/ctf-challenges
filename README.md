@@ -1,4 +1,3 @@
-```markdown
 # CTF Challenges Writeups
 
 This repository is dedicated to documenting the CTF (Capture The Flag) challenges I’ve completed. The goal of this repository is not just to archive my own progress, but also to **teach others**, **share ideas**, and **explore new approaches** to solving security problems.
@@ -66,4 +65,3 @@ If you have suggestions, feedback, or ideas, feel free to open an issue or reach
 ---
 
 Let’s solve challenges, share knowledge, and grow together as a community!
-```
