@@ -1,5 +1,3 @@
-Here’s an enhanced and structured writeup for Challenge 4 with more clarity, organization, and explanation:
-
 ---
 
 # **Challenge 4: Flag Binary**
