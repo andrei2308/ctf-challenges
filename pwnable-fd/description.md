@@ -1,4 +1,3 @@
-Here’s an enhanced version of your description, organized and polished for readability and better explanation. You can use this as the foundation for your CTF repository:
 
 ---
 
@@ -65,6 +64,7 @@ Our goal is to get the program to execute `system("/bin/cat flag")` and reveal t
      ```c
      system("/bin/cat flag")
      ```
+    ![alt text](image-1.png)
 
 ---
 
