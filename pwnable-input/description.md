@@ -112,7 +112,7 @@ The binary listens on the port provided in `argv['C']` and expects the value `\x
 
 2. In a separate terminal, send the required input via netcat:
     ```bash
-    python3 -c 'print("\xde\xad\xbe\xef")' | nc localhost 8080
+    python -c 'print '\xde\xad\xbe\xef'' | nc localhost 8080
     ```
 
 ---
