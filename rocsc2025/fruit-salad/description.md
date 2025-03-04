@@ -83,7 +83,7 @@ As we see, now the message changes, which means that the "$" character escapes d
 To get the flag I constructed a Python script that tries every letter and number. When the message is "Enjoy your salad", it means that the letter or number is correct, so we memorize it into the variable where we construct the flag and go to the next character.
 
 Running this script (see the exploit.py file in this folder) gives us the complete flag character by character.
-
+![alt text](image-5.png)
 ## Key Takeaways
 1. The hint ("mango") pointed to MongoDB/NoSQL injection
 2. Understanding the response behavior was crucial (5 fruits vs fewer)
