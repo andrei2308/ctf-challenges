@@ -75,5 +75,3 @@ We can now:
 - Hidden API endpoint reveals secret commands
 - Network tab analysis revealed the solution
 - Secret command bypasses the normal game flow
-
-**Flag:** `[Insert flag here after using the secret command]`
