@@ -1,67 +1,97 @@
-# CTF Challenges Writeups
+# CTF Challenges Repository
 
-This repository is dedicated to documenting the CTF (Capture The Flag) challenges I’ve completed. The goal of this repository is not just to archive my own progress, but also to **teach others**, **share ideas**, and **explore new approaches** to solving security problems.
+Welcome to my comprehensive collection of CTF (Capture The Flag) writeups! This repository documents my journey through various cybersecurity challenges, providing detailed explanations and solutions to help others learn.
 
-## **Scope of the Repository**
-1. **Educational Focus**:
-   - Provide clear and detailed explanations for every challenge.
-   - Break down problems into manageable parts to help others understand and learn.
-   - Share insights into techniques, tools, and thought processes used in solving challenges.
+## 🎯 Challenge Categories
 
-2. **Knowledge Sharing**:
-   - Highlight common pitfalls and effective strategies.
-   - Showcase creative ways to approach CTF problems, from binary exploitation to reverse engineering.
+### 🔍 [Reverse Engineering](./reverse-engineering/)
+Master the art of understanding binaries and uncovering hidden functionality.
 
-3. **Encouraging Collaboration**:
-   - Serve as a platform for others to contribute their ideas or solutions.
-   - Exchange knowledge and learn from others’ experiences.
+**Featured Challenges:**
+- [SpookyPass](./reverse-engineering/spookypass/) - Basic password extraction from binary
+- [Behind the Scenes](./reverse-engineering/behind-the-scenes/) - Anti-debugging and obfuscation techniques
+- [Simple Encryptor](./reverse-engineering/simple-encryptor/) - Ransomware analysis and decryption
 
----
+### 🌐 [Web Exploitation](./web-exploitation/)
+Dive into web application security and modern attack vectors.
 
-## **Who Is This Repository For?**
-- **CTF Beginners**:
-  - If you’re new to CTFs, this repository will help you learn step-by-step how to approach challenges.
-- **Intermediate Players**:
-  - If you’re already familiar with CTFs, you can find alternative ways to solve problems or enhance your skills by reviewing the detailed solutions.
-- **Enthusiasts and Learners**:
-  - Anyone who loves exploring binary exploitation, reverse engineering, or problem-solving in general.
+**Featured Challenges:**
+- [Dimensional Escape Quest](./web-exploitation/dimensional-escape-quest/) - API endpoint discovery
+- [Spookifier](./web-exploitation/spookifier/) - Server-Side Template Injection (SSTI)
 
----
+### 🔐 [Cryptography](./cryptography/)
+Explore the world of cryptanalysis and cipher breaking.
 
-## **Topics Covered**
-This repository will cover challenges across a variety of categories, such as:
-- Binary Exploitation
-- Reverse Engineering
-- Web Exploitation
-- Cryptography
-- Miscellaneous Challenges (e.g., OSINT, Steganography)
+**Featured Challenges:**
+- [BabyEncryption](./cryptography/baby-encryption/) - Affine cipher cryptanalysis
+- [The Last Dance](./cryptography/the-last-dance/) - ChaCha20 nonce reuse attack
 
-Each writeup will include:
-- A description of the problem.
-- The solution process, including tools and techniques used.
-- Key takeaways or lessons learned from the challenge.
+### ⛓️ [Blockchain](./blockchain/)
+Understand smart contract vulnerabilities and blockchain security.
+
+**Featured Challenges:**
+- [Distract and Destroy](./blockchain/distract-and-destroy/) - Smart contract exploitation
+
+### 🎮 [Game Pwning](./game-pwning/)
+Learn memory manipulation and game hacking techniques.
+
+**Featured Challenges:**
+- [CubeMadness1](./game-pwning/cubemadness1/) - Memory manipulation with Cheat Engine
 
 ---
 
-## **Why Create This Repository?**
-- **To Learn**: Documenting solutions helps reinforce understanding.
-- **To Teach**: Explaining concepts to others clarifies your own knowledge.
-- **To Share**: Security and CTFs thrive on collaboration and shared learning.
-- **To Contribute**: Help others enter the world of cybersecurity and hacking by lowering the barrier to entry.
+## 🎓 Learning Path
+
+### For Beginners
+1. Start with [BabyEncryption](./cryptography/baby-encryption/) to understand basic cryptanalysis
+2. Try [SpookyPass](./reverse-engineering/spookypass/) for your first binary analysis
+3. Explore [Dimensional Escape Quest](./web-exploitation/dimensional-escape-quest/) for web fundamentals
+
+### For Intermediate Players
+1. Tackle [The Last Dance](./cryptography/the-last-dance/) for advanced crypto attacks
+2. Challenge yourself with [Simple Encryptor](./reverse-engineering/simple-encryptor/) for complex reversing
+3. Master [Spookifier](./web-exploitation/spookifier/) for SSTI exploitation
+
+### For Advanced Users
+1. Dive into [Distract and Destroy](./blockchain/distract-and-destroy/) for blockchain security
+2. Explore [Behind the Scenes](./reverse-engineering/behind-the-scenes/) for anti-debugging techniques
 
 ---
 
-## **Contributing**
-This repository welcomes contributions from anyone passionate about CTFs. Feel free to:
-- Add your own writeups or insights.
-- Improve existing explanations.
-- Share tools or scripts that others might find helpful.
+## 📚 What You'll Find
+
+Each writeup includes:
+- **Challenge Description** - Context and objectives
+- **Analysis Process** - Step-by-step problem solving
+- **Tools & Techniques** - Practical skills demonstration
+- **Complete Solutions** - Working exploits and explanations
+- **Key Takeaways** - Lessons learned and best practices
+
+## 🛠️ Tools Covered
+
+- **Reverse Engineering**: Ghidra, GDB, objdump, readelf
+- **Web Security**: Burp Suite, Browser DevTools, curl
+- **Cryptography**: Python cryptanalysis, mathematical foundations
+- **Blockchain**: Foundry, cast, Solidity analysis
+- **Game Hacking**: Cheat Engine, memory manipulation
+
+## 🤝 Contributing
+
+This repository welcomes contributions! Feel free to:
+- Add your own writeups
+- Improve existing explanations
+- Share useful tools or scripts
+- Suggest new challenge categories
+
+## 📬 Connect
+
+If you have questions, suggestions, or want to collaborate:
+- Open an issue on this repository
+- Share your own solutions and approaches
+- Help make cybersecurity more accessible to everyone
 
 ---
 
-## **Contact**
-If you have suggestions, feedback, or ideas, feel free to open an issue or reach out to collaborate.
+**Happy Hacking! 🚀**
 
----
-
-Let’s solve challenges, share knowledge, and grow together as a community!
+*Let's solve challenges, share knowledge, and grow together as a community!*
