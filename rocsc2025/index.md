@@ -41,69 +41,53 @@ Digital forensics and incident response scenarios
 
 ### 🧮 **Mathematical Category**
 
-#### [mathrix](./mathrix/)
-**Points:** 300  
-**Category:** Mathematical Analysis  
-**Difficulty:** ⭐⭐⭐☆☆
+#### **[📁 mathrix](./mathrix/)**
+**Points:** 300 | **Difficulty:** ⭐⭐⭐☆☆ | **Category:** Mathematical Analysis
 
 Advanced mathematical challenge involving matrix operations and number theory. Requires deep understanding of linear algebra and computational mathematics.
 
-**Skills Learned:**
-- Matrix manipulation algorithms
-- Mathematical optimization
-- Python numerical computing
-- Advanced problem-solving techniques
+**Skills Learned:** Matrix manipulation algorithms, Mathematical optimization, Python numerical computing
+
+**[→ Read Full Writeup](./mathrix/README.md)**
 
 ---
 
 ### 🏁 **Racing Category**
 
-#### [formula1](./formula1/)
-**Points:** 250  
-**Category:** Algorithm Optimization  
-**Difficulty:** ⭐⭐⭐☆☆
+#### **[📁 formula1](./formula1/)**
+**Points:** 250 | **Difficulty:** ⭐⭐⭐☆☆ | **Category:** Algorithm Optimization
 
 High-speed algorithm challenge simulating Formula 1 racing scenarios with optimization constraints.
 
-**Skills Learned:**
-- Algorithm optimization
-- Performance analysis
-- Race condition handling
-- Time complexity optimization
+**Skills Learned:** Algorithm optimization, Performance analysis, Race condition handling
+
+**[→ Read Full Writeup](./formula1/README.md)**
 
 ---
 
 ### 🕵️ **OSINT Category**
 
-#### [exfill-very-funny](./exfill-very-funny/)
-**Points:** 200  
-**Category:** Data Exfiltration Analysis  
-**Difficulty:** ⭐⭐☆☆☆
+#### **[📁 exfill-very-funny](./exfill-very-funny/)**
+**Points:** 200 | **Difficulty:** ⭐⭐☆☆☆ | **Category:** Data Exfiltration Analysis
 
 Open Source Intelligence challenge involving analysis of data exfiltration techniques and digital forensics.
 
-**Skills Learned:**
-- OSINT methodology
-- Data analysis techniques
-- Digital forensics
-- Investigation procedures
+**Skills Learned:** OSINT methodology, Data analysis techniques, Digital forensics
+
+**[→ Read Full Writeup](./exfill-very-funny/README.md)**
 
 ---
 
 ### 🍎 **Steganography Category**
 
-#### [fruit-salad](./fruit-salad/)
-**Points:** 150  
-**Category:** Steganography & Hidden Data  
-**Difficulty:** ⭐⭐☆☆☆
+#### **[📁 fruit-salad](./fruit-salad/)**
+**Points:** 150 | **Difficulty:** ⭐⭐☆☆☆ | **Category:** Steganography & Hidden Data
 
 Creative steganography challenge hiding information within seemingly innocent fruit-related content.
 
-**Skills Learned:**
-- Steganography techniques
-- Hidden data extraction
-- Image/file analysis
-- Creative problem-solving
+**Skills Learned:** Steganography techniques, Hidden data extraction, Image/file analysis
+
+**[→ Read Full Writeup](./fruit-salad/README.md)**
 
 ---
 
@@ -124,12 +108,8 @@ Creative steganography challenge hiding information within seemingly innocent fr
 ### **Mathematical Analysis**
 - **SageMath** - Advanced mathematical computations
 - **NumPy/SciPy** - Numerical computing in Python
-- **Wolfram Alpha** - Mathematical problem solving
-- **MATLAB** - Matrix operations and analysis
 
 ### **OSINT & Investigation**
-- **Google Dorking** - Advanced search techniques
-- **Shodan** - Internet-connected device search
 - **Maltego** - Link analysis and investigation
 - **theHarvester** - Information gathering
 
@@ -137,7 +117,6 @@ Creative steganography challenge hiding information within seemingly innocent fr
 - **steghide** - Hide/extract data in images
 - **stegsolve** - Image analysis tool
 - **binwalk** - Firmware analysis and extraction
-- **exiftool** - Metadata analysis
 
 ### **General Tools**
 - **Python** - Scripting and automation
@@ -210,7 +189,6 @@ Creative steganography challenge hiding information within seemingly innocent fr
 ## 🔗 Competition Resources
 
 ### **Official Resources**
-- [ROCSC Official Website](https://rocsc.ro) *(hypothetical)*
 - Competition Discord Server
 - Official Challenge Archive
 - Romanian Cybersecurity Association
