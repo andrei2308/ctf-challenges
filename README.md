@@ -1,97 +1,174 @@
-# CTF Challenges Repository
+# 🚩 CTF Challenges Repository
 
-Welcome to my comprehensive collection of CTF (Capture The Flag) writeups! This repository documents my journey through various cybersecurity challenges, providing detailed explanations and solutions to help others learn.
+Welcome to my comprehensive collection of CTF (Capture The Flag) writeups! This repository documents my journey through various cybersecurity challenges across multiple platforms, providing detailed explanations and solutions to help others learn.
 
-## 🎯 Challenge Categories
+## 🎯 Quick Navigation
 
-### 🔍 [Reverse Engineering](./reverse-engineering/)
-Master the art of understanding binaries and uncovering hidden functionality.
+### 🏆 **CTF Platforms**
+- [**HackTheBox**](./HackTheBox/) - Penetration testing labs and challenges
+- [**pwnable.kr**](./pwnable.kr/) - Binary exploitation challenges 
+- [**ROCSC 2025**](./rocsc2025/) - Romanian Cybersecurity Challenge 2025
 
-**Featured Challenges:**
-- [SpookyPass](./reverse-engineering/spookypass/) - Basic password extraction from binary
-- [Behind the Scenes](./reverse-engineering/behind-the-scenes/) - Anti-debugging and obfuscation techniques
-- [Simple Encryptor](./reverse-engineering/simple-encryptor/) - Ransomware analysis and decryption
-
-### 🌐 [Web Exploitation](./web-exploitation/)
-Dive into web application security and modern attack vectors.
-
-**Featured Challenges:**
-- [Dimensional Escape Quest](./web-exploitation/dimensional-escape-quest/) - API endpoint discovery
-- [Spookifier](./web-exploitation/spookifier/) - Server-Side Template Injection (SSTI)
-
-### 🔐 [Cryptography](./cryptography/)
-Explore the world of cryptanalysis and cipher breaking.
-
-**Featured Challenges:**
-- [BabyEncryption](./cryptography/baby-encryption/) - Affine cipher cryptanalysis
-- [The Last Dance](./cryptography/the-last-dance/) - ChaCha20 nonce reuse attack
-
-### ⛓️ [Blockchain](./blockchain/)
-Understand smart contract vulnerabilities and blockchain security.
-
-**Featured Challenges:**
-- [Distract and Destroy](./blockchain/distract-and-destroy/) - Smart contract exploitation
-
-### 🎮 [Game Pwning](./game-pwning/)
-Learn memory manipulation and game hacking techniques.
-
-**Featured Challenges:**
-- [CubeMadness1](./game-pwning/cubemadness1/) - Memory manipulation with Cheat Engine
+### 📚 **Challenge Categories**
+- [**Reverse Engineering**](./reversing/) - Binary analysis and malware research
+- [**Web Exploitation**](./web/) - Web application security
+- [**Cryptography**](./crypto/) - Cipher breaking and cryptanalysis
+- [**Blockchain**](./blockchain/) - Smart contract security
+- [**Game Pwning**](./pwn/) - Memory manipulation and game hacking
 
 ---
 
-## 🎓 Learning Path
+## 🌟 Featured Challenges
 
-### For Beginners
-1. Start with [BabyEncryption](./cryptography/baby-encryption/) to understand basic cryptanalysis
-2. Try [SpookyPass](./reverse-engineering/spookypass/) for your first binary analysis
-3. Explore [Dimensional Escape Quest](./web-exploitation/dimensional-escape-quest/) for web fundamentals
+### 🔥 Recent Additions
+- **[Simple Encryptor](./reversing/simple-encryptor/)** - Advanced ransomware analysis
+- **[The Last Dance](./crypto/the-last-dance/)** - ChaCha20 nonce reuse attack
+- **[Distract and Destroy](./blockchain/distract-and-destroy/)** - Smart contract exploitation
 
-### For Intermediate Players
-1. Tackle [The Last Dance](./cryptography/the-last-dance/) for advanced crypto attacks
-2. Challenge yourself with [Simple Encryptor](./reverse-engineering/simple-encryptor/) for complex reversing
-3. Master [Spookifier](./web-exploitation/spookifier/) for SSTI exploitation
+### 🎖️ Platform Highlights
 
-### For Advanced Users
-1. Dive into [Distract and Destroy](./blockchain/distract-and-destroy/) for blockchain security
-2. Explore [Behind the Scenes](./reverse-engineering/behind-the-scenes/) for anti-debugging techniques
+#### HackTheBox
+Explore professional penetration testing scenarios and real-world security challenges.
+[**Browse HackTheBox Challenges →**](./HackTheBox/)
+
+#### pwnable.kr
+Master binary exploitation with progressive difficulty levels:
+- **Buffer Overflow** - Classic stack-based exploits
+- **Format String** - Advanced memory corruption
+- **Heap Exploitation** - Modern heap attack techniques
+- **Race Conditions** - Timing-based vulnerabilities
+
+[**Browse pwnable.kr Challenges →**](./pwnable.kr/)
+
+#### ROCSC 2025
+Competitive challenges from Romania's premier cybersecurity competition.
+[**Browse ROCSC 2025 →**](./rocsc2025/)
 
 ---
 
-## 📚 What You'll Find
+## 📊 Repository Stats
 
-Each writeup includes:
-- **Challenge Description** - Context and objectives
-- **Analysis Process** - Step-by-step problem solving
-- **Tools & Techniques** - Practical skills demonstration
-- **Complete Solutions** - Working exploits and explanations
-- **Key Takeaways** - Lessons learned and best practices
+| Metric | Count |
+|--------|-------|
+| **Total Challenges** | 25+ |
+| **Platforms Covered** | 3 |
+| **Categories** | 6 |
+| **Writeups** | Detailed |
 
-## 🛠️ Tools Covered
+---
 
-- **Reverse Engineering**: Ghidra, GDB, objdump, readelf
-- **Web Security**: Burp Suite, Browser DevTools, curl
-- **Cryptography**: Python cryptanalysis, mathematical foundations
-- **Blockchain**: Foundry, cast, Solidity analysis
-- **Game Hacking**: Cheat Engine, memory manipulation
+## 🛠️ Tools & Techniques Covered
+
+### Reverse Engineering
+- **Ghidra** - NSA's reverse engineering suite
+- **GDB** - GNU debugger for dynamic analysis
+- **radare2** - Command-line reverse engineering framework
+- **IDA** - Industry standard disassembler
+
+### Web Security
+- **Burp Suite** - Web application security testing
+- **OWASP ZAP** - Open-source security scanner
+- **Custom scripts** - Python/Bash automation
+
+### Binary Exploitation
+- **pwntools** - CTF framework and exploit development
+- **GDB with plugins** - Enhanced debugging (peda, gef)
+- **ROPgadget** - Return-oriented programming
+- **Checksec** - Binary security analysis
+
+### Cryptography
+- **SageMath** - Mathematical cryptanalysis
+- **Python libraries** - pycryptodome, sympy
+- **Custom algorithms** - Cipher implementation and breaking
+
+---
+
+## 📖 Learning Paths
+
+### 🌱 **Beginner Path**
+1. [SpookyPass](./reversing/spookypass/) - Basic binary analysis
+2. [BabyEncryption](./crypto/baby-encryption/) - Simple cipher breaking
+3. [CubeMadness1](./pwn/cubemadness1/) - Memory manipulation basics
+
+### 🚀 **Intermediate Path**
+1. [Behind the Scenes](./reversing/behind-the-scenes/) - Anti-debugging techniques
+2. [Spookifier](./web/spookifier/) - SSTI exploitation
+3. [pwnable.kr challenges](./pwnable.kr/) - Progressive binary exploitation
+
+### 🎯 **Advanced Path**
+1. [Simple Encryptor](./reversing/simple-encryptor/) - Complex algorithm analysis
+2. [The Last Dance](./crypto/the-last-dance/) - Advanced cryptographic attacks
+3. [Distract and Destroy](./blockchain/distract-and-destroy/) - Smart contract security
+
+---
+
+## 🎓 Educational Focus
+
+### **Clear Explanations**
+Every writeup includes step-by-step problem solving with detailed explanations of techniques and thought processes.
+
+### **Tool Mastery**
+Learn industry-standard tools through practical application in real CTF scenarios.
+
+### **Security Concepts**
+Understand fundamental security principles through hands-on exploitation and analysis.
+
+### **Best Practices**
+Discover effective methodologies for approaching different types of security challenges.
+
+---
 
 ## 🤝 Contributing
 
-This repository welcomes contributions! Feel free to:
-- Add your own writeups
-- Improve existing explanations
-- Share useful tools or scripts
-- Suggest new challenge categories
+This repository welcomes contributions from the cybersecurity community:
 
-## 📬 Connect
+- **Add your own writeups** - Share alternative solutions
+- **Improve explanations** - Help make content more accessible
+- **Suggest challenges** - Recommend interesting problems to solve
+- **Report issues** - Help improve accuracy and clarity
 
-If you have questions, suggestions, or want to collaborate:
-- Open an issue on this repository
-- Share your own solutions and approaches
-- Help make cybersecurity more accessible to everyone
+### How to Contribute
+1. Fork the repository
+2. Create a feature branch
+3. Add your writeup following the established format
+4. Submit a pull request with a clear description
 
 ---
 
-**Happy Hacking! 🚀**
+## 📬 Connect & Collaborate
 
-*Let's solve challenges, share knowledge, and grow together as a community!*
+- **GitHub Issues** - Report problems or suggest improvements
+- **Discussions** - Share ideas and alternative approaches
+- **Pull Requests** - Contribute your own solutions
+
+---
+
+## 🏅 Achievements & Certifications
+
+This repository demonstrates practical skills in:
+- **Penetration Testing**
+- **Malware Analysis** 
+- **Web Application Security**
+- **Cryptanalysis**
+- **Blockchain Security**
+- **Binary Exploitation**
+
+---
+
+## 📝 License
+
+This repository is licensed under the MIT License. Feel free to use the content for educational purposes and share knowledge with the cybersecurity community.
+
+---
+
+**Happy Hacking! 🔐**
+
+*"The best way to learn security is to break things responsibly."*
+
+---
+
+### 🔗 Quick Links
+- [All Challenges by Category](./challenges-by-category.md)
+- [Tools and Resources](./tools-and-resources.md)
+- [Getting Started Guide](./getting-started.md)
+- [Contribution Guidelines](./CONTRIBUTING.md)
