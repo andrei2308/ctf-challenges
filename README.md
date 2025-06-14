@@ -10,20 +10,20 @@ Welcome to my comprehensive collection of CTF (Capture The Flag) writeups! This 
 - [**ROCSC 2025**](./rocsc2025/) - Romanian Cybersecurity Challenge 2025
 
 ### 📚 **Challenge Categories**
-- [**Reverse Engineering**](./reversing/) - Binary analysis and malware research
-- [**Web Exploitation**](./web/) - Web application security
-- [**Cryptography**](./crypto/) - Cipher breaking and cryptanalysis
-- [**Blockchain**](./blockchain/) - Smart contract security
-- [**Game Pwning**](./pwn/) - Memory manipulation and game hacking
+- [**Reverse Engineering**](./HackTheBox/reversing/) - Binary analysis and malware research
+- [**Web Exploitation**](./HackTheBox/web/) - Web application security
+- [**Cryptography**](./HackTheBox/crypto/) - Cipher breaking and cryptanalysis
+- [**Blockchain**](./HackTheBox/blockchain/) - Smart contract security
+- [**Game Pwning**](./HackTheBox/pwn/) - Memory manipulation and game hacking
 
 ---
 
 ## 🌟 Featured Challenges
 
 ### 🔥 Recent Additions
-- **[Simple Encryptor](./reversing/simple-encryptor/)** - Advanced ransomware analysis
-- **[The Last Dance](./crypto/the-last-dance/)** - ChaCha20 nonce reuse attack
-- **[Distract and Destroy](./blockchain/distract-and-destroy/)** - Smart contract exploitation
+- **[Simple Encryptor](./HackTheBox/reversing/simple-encryptor/)** - Advanced ransomware analysis
+- **[The Last Dance](./HackTheBox/crypto/the-last-dance/)** - ChaCha20 nonce reuse attack
+- **[Distract and Destroy](./HackTheBox/blockchain/distract-and-destroy/)** - Smart contract exploitation
 
 ### 🎖️ Platform Highlights
 
@@ -86,19 +86,19 @@ Competitive challenges from Romania's premier cybersecurity competition.
 ## 📖 Learning Paths
 
 ### 🌱 **Beginner Path**
-1. [SpookyPass](./reversing/spookypass/) - Basic binary analysis
-2. [BabyEncryption](./crypto/baby-encryption/) - Simple cipher breaking
-3. [CubeMadness1](./pwn/cubemadness1/) - Memory manipulation basics
+1. [SpookyPass](./HackTheBox/reversing/spookypass/) - Basic binary analysis
+2. [BabyEncryption](./HackTheBox/crypto/baby-encryption/) - Simple cipher breaking
+3. [CubeMadness1](./HackTheBox/pwn/cubemadness1/) - Memory manipulation basics
 
 ### 🚀 **Intermediate Path**
-1. [Behind the Scenes](./reversing/behind-the-scenes/) - Anti-debugging techniques
-2. [Spookifier](./web/spookifier/) - SSTI exploitation
+1. [Behind the Scenes](./HackTheBox/reversing/behind-the-scenes/) - Anti-debugging techniques
+2. [Spookifier](./HackTheBox/web/spookifier/) - SSTI exploitation
 3. [pwnable.kr challenges](./pwnable.kr/) - Progressive binary exploitation
 
 ### 🎯 **Advanced Path**
-1. [Simple Encryptor](./reversing/simple-encryptor/) - Complex algorithm analysis
-2. [The Last Dance](./crypto/the-last-dance/) - Advanced cryptographic attacks
-3. [Distract and Destroy](./blockchain/distract-and-destroy/) - Smart contract security
+1. [Simple Encryptor](./HackTheBox/reversing/simple-encryptor/) - Complex algorithm analysis
+2. [The Last Dance](./HackTheBox/crypto/the-last-dance/) - Advanced cryptographic attacks
+3. [Distract and Destroy](./HackTheBox/blockchain/distract-and-destroy/) - Smart contract security
 
 ---
 
