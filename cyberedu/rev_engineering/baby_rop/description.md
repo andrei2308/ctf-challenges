@@ -1,4 +1,3 @@
-Excellent writeup for the "Baby ROP" challenge! Here's a polished version with some corrections and additional explanations:
 
 ## Challenge: Baby ROP
 **Type:** Pwn/Binary Exploitation  
