@@ -1,4 +1,3 @@
-You're absolutely right! Here's the writeup with the original photos preserved:
 
 ## Challenge: Baby ROP
 **Type:** Pwn/Binary Exploitation  
