@@ -1,4 +1,3 @@
-Perfect! Here's your writeup with all the images preserved:
 
 ## Challenge: Reccon
 **Type:** Web  
