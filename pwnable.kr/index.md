@@ -26,7 +26,7 @@ Classic buffer overflow challenge perfect for learning the fundamentals.
 
 ---
 
-#### [Collision](./pwnable-collisions/)
+#### [Collision](./pwnable-collisions/description.md)
 **Points:** 3  
 **Category:** Hash collision  
 **Skills:** Algorithm analysis, collision detection
@@ -35,7 +35,7 @@ Understanding hash functions and finding collisions in custom implementations.
 
 ---
 
-#### [Flag](./pwnable-flag/)
+#### [Flag](./pwnable-flag/description.md)
 **Points:** 3  
 **Category:** Reverse engineering  
 **Skills:** Binary analysis, string extraction
