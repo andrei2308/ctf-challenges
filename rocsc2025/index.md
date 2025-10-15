@@ -63,7 +63,7 @@ High-speed algorithm challenge simulating Formula 1 racing scenarios with optimi
 
 ### 🕵️ **OSINT Category**
 
-#### **[📝 exfill-very-funny](./exfill-very funny/description.md)**
+#### **[📝 exfill-very-funny](./exfill-very%20funny/description.md)**
 **Points:** 200 | **Difficulty:** ⭐⭐☆☆☆ | **Category:** Data Exfiltration Analysis
 
 Open Source Intelligence challenge involving analysis of data exfiltration techniques and digital forensics.
