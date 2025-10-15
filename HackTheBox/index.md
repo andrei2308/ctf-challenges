@@ -4,7 +4,7 @@ This directory contains writeups for various HackTheBox challenges.
 
 ## Blockchain
 
-- [DistractAndDestroy](./DistractAndDestroy/description.md)
+- [DistractAndDestroy](./blockchain/DistractAndDestroy/description.md)
 
 ## Crypto
 
