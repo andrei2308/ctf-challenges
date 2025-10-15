@@ -154,6 +154,68 @@ The full exploit can be found in the repository.
 
 ---
 
+### **C Exploit**
+
+Here’s the C exploit for the challenge:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+void reverse_obfuscation(unsigned char *data, int length, unsigned int seed)
+{
+    srand(seed);
+
+    for (int i = 0; i < length; i++)
+    {
+        int iVar1 = rand();
+        int local_3c = rand();
+        local_3c = local_3c & 7;
+
+        data[i] = (data[i] >> local_3c) | (data[i] << (8 - local_3c));
+
+        data[i] = data[i] ^ (unsigned char)iVar1;
+    }
+}
+
+int main()
+{
+    FILE *f = fopen("flag.enc", "rb");
+    if (!f)
+    {
+        printf("Cannot open file.enc\n");
+        return 1;
+    }
+
+    fseek(f, 0, SEEK_END);
+    long file_size = ftell(f);
+    fseek(f, 0, SEEK_SET);
+
+    unsigned char *data = malloc(file_size);
+    fread(data, 1, file_size, f);
+    fclose(f);
+
+    unsigned int seed = *(unsigned int *)data; // automatically gets the first 4 bytes while casting to unsigned int because unsigned int takes 4 bytes
+    printf("Seed: %u (0x%08X)\n", seed, seed);
+
+    int flag_length = file_size - 4;
+    reverse_obfuscation(data + 4, flag_length, seed);
+
+    printf("Flag: ");
+    for (int i = 0; i < flag_length; i++)
+    {
+        printf("%c", data[4 + i]);
+    }
+    printf("\n");
+
+    free(data);
+    return 0;
+}
+```
+
+---
+
 **Vulnerability Type:** Predictable Random Number Generator + Seed Exposure  
 **Key Technique:** Deterministic PRNG Reversal  
 **Critical Flaw:** Seed stored in encrypted output  
