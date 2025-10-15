@@ -82,15 +82,6 @@ Introduction to ARM assembly language and architecture differences.
 
 ---
 
-#### [Mistake](./pwnable-mistake/)
-**Points:** 1  
-**Category:** Logic error  
-**Skills:** Code analysis, operator precedence
-
-Finding logical mistakes in C code and exploiting them.
-
----
-
 ### 🔴 **Advanced Level**
 
 #### [HorCruxes](./pwnable-horcruxes/)
