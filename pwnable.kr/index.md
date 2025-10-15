@@ -84,7 +84,7 @@ Introduction to ARM assembly language and architecture differences.
 
 ### 🔴 **Advanced Level**
 
-#### [HorCruxes](./pwnable-horcruxes/)
+#### [HorCruxes](./pwnable-horcruxes/description.md)
 **Points:** 7  
 **Category:** Return-oriented programming  
 **Skills:** ROP chains, advanced exploitation
