@@ -117,7 +117,7 @@ When running the exploit in SageMath, we get:
 
 ![alt text](image.png)
 
-## Script
+## Exploit
 
 ```python
 #!/usr/bin/env sage
