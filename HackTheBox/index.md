@@ -19,9 +19,9 @@ This directory contains writeups for various HackTheBox challenges.
 
 ## Reversing
 
-- [BehindTheScenes](./BehindTheScenes/description.md)
-- [SimpleEncryptor](./SimpleEncryptor/description.md)
-- [SpookyPass](./SpookyPass/description.md)
+- [BehindTheScenes](./reversing/BehindTheScenes/description.md)
+- [SimpleEncryptor](./reversing/SimpleEncryptor/description.md)
+- [SpookyPass](./reversing/SpookyPass/description.md)
 
 ## Web
 
