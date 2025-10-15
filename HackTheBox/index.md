@@ -8,10 +8,10 @@ This directory contains writeups for various HackTheBox challenges.
 
 ## Crypto
 
-- [BabyEncryption](./BabyEncryption/description.md)
-- [Hidden Hand shake](./Hidden-Hand-shake/description.md)
-- [RSAisEasy](./RSAisEasy/description.md)
-- [TheLastDance](./TheLastDance/description.md)
+- [BabyEncryption](./crypto/BabyEncryption/description.md)
+- [Hidden Hand shake](./crypto/Hidden-Hand-shake/description.md)
+- [RSAisEasy](./crypto/RSAisEasy/description.md)
+- [TheLastDance](./crypto/TheLastDance/description.md)
 
 ## Pwn
 
