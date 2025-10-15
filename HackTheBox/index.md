@@ -9,7 +9,7 @@ This directory contains writeups for various HackTheBox challenges.
 ## Crypto
 
 - [BabyEncryption](./crypto/BabyEncryption/description.md)
-- [Hidden Hand shake](./crypto/Hidden-Hand-shake/description.md)
+- [Hidden Hand shake](./crypto/Hidden%20Handshake/description.md)
 - [RSAisEasy](./crypto/RSAisEasy/description.md)
 - [TheLastDance](./crypto/TheLastDance/description.md)
 
