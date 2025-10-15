@@ -55,7 +55,7 @@ Learn format string exploitation and Global Offset Table manipulation.
 
 ### 🟡 **Intermediate Level**
 
-#### [Random](./pwnable-random/)
+#### [Random](./pwnable-random/description.md)
 **Points:** 1  
 **Category:** Predictable randomness  
 **Skills:** PRNG analysis, predictability
