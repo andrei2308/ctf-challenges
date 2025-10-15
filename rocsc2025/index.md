@@ -41,7 +41,7 @@ Digital forensics and incident response scenarios
 
 ### 🧮 **Mathematical Category**
 
-#### **[📝 mathrix](./mathrix/description.md)**
+#### **[📝 mathrix](./mathrix/index.md)**
 **Points:** 300 | **Difficulty:** ⭐⭐⭐☆☆ | **Category:** Mathematical Analysis
 
 Advanced mathematical challenge involving matrix operations and number theory. Requires deep understanding of linear algebra and computational mathematics.
