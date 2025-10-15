@@ -15,7 +15,7 @@ This directory contains writeups for various HackTheBox challenges.
 
 ## Pwn
 
-- [CubeMadness1](./CubeMadness1/description.md)
+- [CubeMadness1](./pwn/CubeMadness1/description.md)
 
 ## Reversing
 
