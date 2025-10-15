@@ -64,7 +64,7 @@ Understanding pseudo-random number generators and their weaknesses.
 
 ---
 
-#### [Input](./pwnable-input/)
+#### [Input](./pwnable-input/description.md)
 **Points:** 4  
 **Category:** Input validation  
 **Skills:** Multi-vector input, validation bypass
