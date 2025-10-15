@@ -44,7 +44,7 @@ Simple flag extraction challenge to practice basic reversing skills.
 
 ---
 
-#### [Passcode](./pwnable-passcode/)
+#### [Passcode](./pwnable-passcode/description.md)
 **Points:** 10  
 **Category:** Format string vulnerability  
 **Skills:** Memory corruption, GOT overwrite
