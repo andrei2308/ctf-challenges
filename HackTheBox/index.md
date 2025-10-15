@@ -25,8 +25,8 @@ This directory contains writeups for various HackTheBox challenges.
 
 ## Web
 
-- [FlagCommand](./FlagCommand/description.md)
-- [Spookifier](./Spookifier/description.md)
+- [FlagCommand](./web/FlagCommand/description.md)
+- [Spookifier](./web/Spookifier/description.md)
 
 ---
 
