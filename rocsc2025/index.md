@@ -50,7 +50,7 @@ Advanced mathematical challenge involving matrix operations and number theory. R
 
 ---
 
-### 🏁 **Racing Category**
+### 🏁 **Web Category**
 
 #### **[📝 formula1](./formula1/description.md)**
 **Points:** 250 | **Difficulty:** ⭐⭐⭐☆☆ | **Category:** Algorithm Optimization
@@ -72,14 +72,14 @@ Open Source Intelligence challenge involving analysis of data exfiltration techn
 
 ---
 
-### 🍎 **Steganography Category**
+### 🍎 **Web Category**
 
 #### **[📝 fruit-salad](./fruit-salad/description.md)**
 **Points:** 150 | **Difficulty:** ⭐⭐☆☆☆ | **Category:** Steganography & Hidden Data
 
-Creative steganography challenge hiding information within seemingly innocent fruit-related content.
-
-**Skills Learned:** Steganography techniques, Hidden data extraction, Image/file analysis
+Creative web challenge hiding information within seemingly innocent fruit-related content.
+s
+**Skills Learned:** NoSql injection technique, hidden data extraction, database query analysis
 
 ---
 
