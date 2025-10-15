@@ -73,7 +73,7 @@ Complex challenge involving multiple input methods and validation mechanisms.
 
 ---
 
-#### [Leg](./pwnable-leg/)
+#### [Leg](./pwnable-leg/description.md)
 **Points:** 2  
 **Category:** ARM assembly  
 **Skills:** ARM architecture, assembly analysis
