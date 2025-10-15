@@ -17,7 +17,7 @@ Welcome to my pwnable.kr challenge solutions! This platform offers excellent bin
 
 ### 🟢 **Beginner Level**
 
-#### [Buffer Overflow](./pwnable-bufferOverflow/)
+#### [Buffer Overflow](./pwnable-bufferOverflow/description.md)
 **Points:** 1  
 **Category:** Stack-based buffer overflow  
 **Skills:** Basic exploitation, shellcode injection
