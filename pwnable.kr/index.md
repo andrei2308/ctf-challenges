@@ -93,7 +93,7 @@ Complex ROP chain construction in a Harry Potter themed challenge.
 
 ---
 
-#### [Lotto](./pwnable-lotto/)
+#### [Lotto](./pwnable-lotto/description.md)
 **Points:** 2  
 **Category:** Probability manipulation  
 **Skills:** Statistical analysis, logic exploitation
