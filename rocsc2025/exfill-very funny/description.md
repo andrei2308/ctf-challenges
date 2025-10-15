@@ -49,6 +49,24 @@ This pattern suggests that the `User-Agent` field might be used for data exfiltr
 
 To efficiently extract this data, we create a Python script to automatically pull the sequences of zeros from the `User-Agent` headers across all HTTP streams.
 
+## Script
+
+```python
+import pyshark
+
+capture = pyshark.FileCapture('captura.pcap', display_filter='http')
+result = ""
+
+for packet in capture:
+    if hasattr(packet, 'http') and hasattr(packet.http, 'user_agent'):
+        user_agent = packet.http.user_agent
+        if 'curl/' in user_agent:
+            curl_data = user_agent.split('curl/')[1]
+            result += curl_data
+
+print(result)
+```
+
 Running the script produces the following output:
 
 ![alt text](image-2.png)
