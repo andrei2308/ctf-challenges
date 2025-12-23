@@ -1,4 +1,3 @@
-Here is the formatted writeup for the **SHL33T** challenge, ready for GitHub.
 
 ---
 
@@ -129,5 +128,3 @@ p.interactive()
 Sending these bytes modifies the register correctly, satisfying the comparison check and printing the flag.
 
 ---
-
-**Would you like me to verify the opcodes for any other architectures (like x86-64 vs x86) to ensure the 4-byte limit is strictly met across different environments?**
