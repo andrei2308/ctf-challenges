@@ -1,4 +1,3 @@
-Here is the formatted writeup for the **DeadRoute** challenge.
 
 ---
 
@@ -210,5 +209,3 @@ for payload in payloads:
 Executing this script retrieves the flag content from the server.
 
 ---
-
-**Would you like me to diagram the specific memory state of the slice header before and after the race condition occurs?**
