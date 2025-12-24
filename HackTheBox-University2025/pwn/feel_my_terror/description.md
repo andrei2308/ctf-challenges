@@ -1,4 +1,3 @@
-Here is the formatted writeup for **Feel My Terror**.
 
 ---
 
@@ -154,5 +153,3 @@ p.interactive()
 Running the script overwrites the variables in memory. The `check_db` function validates the new values, passes the check, and prints the flag.
 
 ---
-
-**Would you like me to explain how `fmtstr_payload` calculates the padding and `%n` values under the hood?**
