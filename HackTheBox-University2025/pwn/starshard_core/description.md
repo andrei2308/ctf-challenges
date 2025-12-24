@@ -1,4 +1,3 @@
-Here is the formatted writeup for **Starshard Core**.
 
 ---
 
