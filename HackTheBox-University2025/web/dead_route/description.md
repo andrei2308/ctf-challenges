@@ -208,4 +208,6 @@ for payload in payloads:
 
 Executing this script retrieves the flag content from the server.
 
+Also here is a detailed image showing the race condition memory corruption.
+![alt text](memory.png)
 ---
