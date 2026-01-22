@@ -170,3 +170,8 @@ print('CTF{' + flag + '}')
 This challenge demonstrated an interesting application of linear algebra and number theory in cryptography. By transforming the problem into Jordan normal form, we were able to efficiently solve what would otherwise be a computationally intensive discrete logarithm problem.
 
 The key takeaway is that mathematical transformations can often simplify seemingly complex cryptographic challenges, making them tractable with the right approach.
+
+## Credits
+Credits: infernosalex
+
+Blog: https://scant.ro
