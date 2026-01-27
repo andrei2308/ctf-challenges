@@ -1,4 +1,3 @@
-Here is the markdown writeup for the "Secret" challenge.
 
 ---
 
