@@ -62,29 +62,15 @@ HackTheBox CTF contest for universities all around the globe. Achieved 34 place 
 **Focus** Binary exploitation, reverse engineering and web
 **Challenges:** 10+
 
-## Repository Structure
+### [ISM CTF 2025](./ismctf2025)
 
-```
-ctf-challenges/
-├── HackTheBox/
-│   ├── index.md
-│   ├── blockchain/
-│   ├── crypto/
-│   ├── pwn/
-│   ├── reversing/
-│   └── web/
-├── cyberedu/
-│   └── index.md
-├── pwnable.kr/
-│   └── index.md
-├── rocsc2025/
-│   └── index.md
-└── README.md
-```
+University CTF contest. I only posted the hardest challenge (which was only solved by me).
+
+**Focus** Reverse engineering
+**Challenges:** 1
 
 Each challenge directory contains:
-- `description.md` - Challenge overview and objectives
-- `solution.md` or `writeup.md` - Detailed solution walkthrough
+- `description.md` - Detailed writeup
 - `exploit.py` or relevant scripts - Automation scripts and exploits
 - Supporting files and resources
 
