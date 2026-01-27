@@ -62,6 +62,8 @@ HackTheBox CTF contest for universities all around the globe. Achieved 34 place 
 **Focus** Binary exploitation, reverse engineering and web
 **Challenges:** 10+
 
+---
+
 ### [ISM CTF 2025](./ismctf2025)
 
 University CTF contest. I only posted the hardest challenge (which was only solved by me).
