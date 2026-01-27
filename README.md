@@ -64,7 +64,7 @@ HackTheBox CTF contest for universities all around the globe. Achieved 34 place 
 
 ---
 
-### [ISM CTF 2025](./ismctf2025)
+### [ISM CTF 2025](./ismctf2025/crackmeifyoucan/description.md)
 
 University CTF contest. I only posted the hardest challenge (which was only solved by me).
 
