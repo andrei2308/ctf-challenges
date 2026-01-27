@@ -3,7 +3,7 @@ name: Publish to GitHub Pages
 on:
   push:
     branches:
-      - main  # Or 'master', depending on your default branch name
+      - main 
 
 permissions:
   contents: write
