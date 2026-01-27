@@ -55,6 +55,13 @@ Romanian Cybersecurity Challenge - Premier national competition featuring advanc
 
 ---
 
+### [HackTheBox-University 2025](./HackTheBox-University2025)
+
+HackTheBox CTF contest for universities all around the globe. Achieved 34 place globally and 1'st place nationally.
+
+**Focus** Binary exploitation, reverse engineering and web
+**Challenges:** 10+
+
 ## Repository Structure
 
 ```
