@@ -1,4 +1,3 @@
-Here is the writeup for the challenge, focusing on the exploit methodology.
 
 ---
 
