@@ -25,7 +25,7 @@ This directory contains writeups for a collection of CTF challenges involving fo
 | Challenge | Description |
 | --- | --- |
 | [cloudy_core](./reverse_engineering/cloudy_core/description.md) | Binary analysis and reversing |
-| [starshard_reassembly](./reverse_engineering/starshard_reassembly/description.md) | Assembly code reconstruction |
+| [starshard_reassembly](./reverse_engineering/startshard_reassembly/description.md) | Assembly code reconstruction |
 
 ## Web
 
