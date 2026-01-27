@@ -1,4 +1,3 @@
-Here is the markdown writeup for the VM challenge.
 
 ---
 
@@ -74,3 +73,9 @@ STR [266], R0       # Write to stack
 # ... Repeat for /bin/sh addr, RET gadget, and system addr ...
 
 ```
+
+## Exploit Script
+Here is the final solution:
+
+```python
+--8<-- "/docs/cyberedu/pwn/virtual/exploit.py"
