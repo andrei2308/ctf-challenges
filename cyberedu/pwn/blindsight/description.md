@@ -1,4 +1,3 @@
-Here is the comprehensive writeup for the Blind ROP (BROP) challenge "Blindsight".
 
 ---
 
