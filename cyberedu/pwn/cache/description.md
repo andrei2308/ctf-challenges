@@ -1,4 +1,3 @@
-Here is a concise writeup focusing on the exploit steps, formatted for GitHub.
 
 ---
 
