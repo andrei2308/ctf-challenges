@@ -49,6 +49,7 @@ This directory contains writeups for various CyberEDU platform challenges organi
 | Challenge | Description |
 | --- | --- |
 | [mathematics](./rev_engineering/mathematics/description.md) | Algorithm reverse engineering |
+| [strange-puzzle](./rev_engineering/strange-puzzle/description.md) | Puzzle reverse engineering |
 
 ## Steganography
 
