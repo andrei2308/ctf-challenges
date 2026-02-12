@@ -43,6 +43,7 @@ This directory contains writeups for various CyberEDU platform challenges organi
 | [secret](./pwn/secret/description.md) | Format string & ROP chain |
 | [threadz](./pwn/threadz/description.md) | Thread Local Storage (TLS) exploitation |
 | [virtual](./pwn/virtual/description.md) | VM escape & OOB write |
+| [gentei](./pwn/gentei/description.md) | House of spirit bss crawling + fastbin check bypass and hook overwrite |
 
 ## Reverse Engineering
 
