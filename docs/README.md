@@ -75,7 +75,7 @@ University CTF contest. I only posted the hardest challenge (which was only solv
 
 ### [ROCSC-Quals2026](./rocsc2026)
 
-ROCSC qualls phase.
+ROCSC quals phase.
 
 **Focus** Pwn, Cryptography, Web, Osint, Misc, Mobile
 **Challenges:** 16
