@@ -77,7 +77,7 @@ University CTF contest. I only posted the hardest challenge (which was only solv
 
 ROCSC quals phase.
 
-**Focus** Pwn, Cryptography, Web, Osint, Misc, Mobile
+**Focus** Cryptography, Web, OSINT, Pwn, Misc, Mobile, Steganography, ML/AI, Network
 **Challenges:** 16
 
 Each challenge directory contains:
