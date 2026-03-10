@@ -1,33 +1,79 @@
 site_name: Andrei's CTF Writeups
 site_url: https://andrei2308.github.io/ctf-challenges/
+site_description: Curated CTF writeups focused on binary exploitation, reverse engineering, web, and cryptography.
 repo_url: https://github.com/andrei2308/ctf-challenges
 repo_name: andrei2308/ctf-challenges
+edit_uri: ""
+
+nav:
+  - Home: index.md
+  - Repository: repository.md
+  - CyberEDU: cyberedu/index.md
+  - Hack The Box: HackTheBox/index.md
+  - HTB University 2025: HackTheBox-University2025/index.md
+  - pwnable.kr: pwnable.kr/index.md
+  - ROCSC 2025: rocsc2025/index.md
+  - ROCSC 2026: rocsc2026/index.md
+  - Unbreakable 2026: unbreakable2026/index.md
+  - ISM CTF 2025: ismctf2025/crackmeifyoucan/description.md
 
 theme:
   name: material
-  palette: 
+  font: false
+  palette:
     - scheme: slate
-      primary: teal
-      accent: purple
+      primary: black
+      accent: green
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
     - scheme: default
       primary: teal
-      accent: purple
+      accent: green
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
   features:
-    - search.suggest        
-    - search.highlight     
-    - navigation.expand    
-    - content.code.copy     
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/andrei2308
+      name: GitHub profile
+
+extra_css:
+  - assets/stylesheets/extra.css
 
 markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  - admonition              
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.keys
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition

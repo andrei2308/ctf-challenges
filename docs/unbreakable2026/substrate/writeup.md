@@ -1,9 +1,34 @@
-# Substrae — CTF Writeup
+<div class="writeup-hero">
+    <span class="section-kicker">Flagship Writeup</span>
+    <h1 class="writeup-title">Substrate</h1>
+    <p class="writeup-deck">
+        A Windows user-mode and kernel-mode reverse engineering challenge combining import obfuscation, anti-debugging, dynamic string recovery, device I/O analysis, and modular linear algebra.
+    </p>
+    <div class="meta-grid">
+        <div class="meta-card">
+            <span class="meta-label">Category</span>
+            <strong>Reverse Engineering</strong>
+        </div>
+        <div class="meta-card">
+            <span class="meta-label">Focus</span>
+            <strong>Windows RE + Driver Analysis</strong>
+        </div>
+        <div class="meta-card">
+            <span class="meta-label">Techniques</span>
+            <strong>Unicorn, IOCTL tracing, matrix inversion</strong>
+        </div>
+        <div class="meta-card">
+            <span class="meta-label">Flag</span>
+            <strong><code>CTF{1c41e1d89f95c6c6b45f256f06e554f904257c884f683528302bacbde8b9484f}</code></strong>
+        </div>
+    </div>
+</div>
 
-**Category:** Reverse Engineering  
-**Flag:** `CTF{1c41e1d89f95c6c6b45f256f06e554f904257c884f683528302bacbde8b9484f}`
-
----
+<div class="writeup-panel terminal-note">
+    <p>
+        This is one of the strongest writeups in the repository because it shows the full chain: recover obfuscated strings, reconstruct user-mode behavior, reverse the driver verification routine, then solve the math cleanly instead of brute-forcing around the design.
+    </p>
+</div>
 
 ## Summary
 

@@ -1,8 +1,34 @@
-# Backstreet Boys — Web Writeup
+<div class="writeup-hero">
+  <span class="section-kicker">Flagship Writeup</span>
+  <h1 class="writeup-title">Backstreet Boys</h1>
+  <p class="writeup-deck">
+    An application-research-heavy web challenge built around Open WebUI, version fingerprinting, stored XSS, and token theft against an admin bot workflow.
+  </p>
+  <div class="meta-grid">
+    <div class="meta-card">
+      <span class="meta-label">Category</span>
+      <strong>Web</strong>
+    </div>
+    <div class="meta-card">
+      <span class="meta-label">CVE</span>
+      <strong>CVE-2025-46719</strong>
+    </div>
+    <div class="meta-card">
+      <span class="meta-label">Focus</span>
+      <strong>Stored XSS and privilege escalation</strong>
+    </div>
+    <div class="meta-card">
+      <span class="meta-label">Flag</span>
+      <strong><code>CTF{f1l3_pr3v13w_w45_7h3_bug_7h47_pwn3d_3v3ry0n3}</code></strong>
+    </div>
+  </div>
+</div>
 
-**Category:** Web  
-**CVE:** CVE-2025-46719  
-**Flag:** `CTF{f1l3_pr3v13w_w45_7h3_bug_7h47_pwn3d_3v3ry0n3}`
+<div class="writeup-panel terminal-note">
+  <p>
+    This page works well as a featured web writeup because it combines product identification, vulnerability research, and a realistic browser-side exfiltration chain rather than a single isolated endpoint bug.
+  </p>
+</div>
 
 ## Challenge Description
 

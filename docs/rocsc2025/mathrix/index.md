@@ -1,4 +1,34 @@
-# Mathrix CTF Challenge Write-up
+<div class="writeup-hero">
+    <span class="section-kicker">Flagship Writeup</span>
+    <h1 class="writeup-title">Mathrix</h1>
+    <p class="writeup-deck">
+        A matrix-cryptography challenge where the practical solve comes from turning a matrix discrete logarithm problem into simpler scalar work through Jordan normal form.
+    </p>
+    <div class="meta-grid">
+        <div class="meta-card">
+            <span class="meta-label">Category</span>
+            <strong>Mathematical Crypto</strong>
+        </div>
+        <div class="meta-card">
+            <span class="meta-label">Focus</span>
+            <strong>Jordan form and matrix DLP</strong>
+        </div>
+        <div class="meta-card">
+            <span class="meta-label">Inputs</span>
+            <strong><code>mathrix.sage</code> and <code>out.txt</code></strong>
+        </div>
+        <div class="meta-card">
+            <span class="meta-label">Takeaway</span>
+            <strong>Exploit the algebraic structure</strong>
+        </div>
+    </div>
+</div>
+
+<div class="writeup-panel terminal-note">
+    <p>
+        This page is an example of the kind of writeup worth featuring: the solve is not about brute force or scripting around symptoms, but about recognizing the right mathematical transformation and reducing the problem cleanly.
+    </p>
+</div>
 
 ## Challenge Overview
 
