@@ -80,6 +80,17 @@ ROCSC quals phase.
 **Focus** Cryptography, Web, OSINT, Pwn, Misc, Mobile, Steganography, ML/AI, Network
 **Challenges:** 16
 
+---
+
+### [Unbreakable-Quals2026](./unbreakable2026)
+
+Unbreakable qualification phase.
+
+**Focus** Binary Exploitation, Web, Reverse Engineering, Forensics, Cryptography
+**Challenges:** 11 (these are the ones solved by me) 
+
+---
+
 Each challenge directory contains:
 - `description.md` - Detailed writeup
 - `exploit.py` or relevant scripts - Automation scripts and exploits
