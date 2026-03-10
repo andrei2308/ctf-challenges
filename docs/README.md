@@ -71,6 +71,15 @@ University CTF contest. I only posted the hardest challenge (which was only solv
 **Focus** Reverse engineering
 **Challenges:** 1
 
+---
+
+### [ROCSC-Quals2026](./rocsc2026)
+
+ROCSC quals phase.
+
+**Focus** Cryptography, Web, OSINT, Pwn, Misc, Mobile, Steganography, ML/AI, Network
+**Challenges:** 16
+
 Each challenge directory contains:
 - `description.md` - Detailed writeup
 - `exploit.py` or relevant scripts - Automation scripts and exploits
