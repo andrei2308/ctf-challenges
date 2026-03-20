@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --site-bg: #050a06;
+  --site-surface: #0a140d;
+  --site-surface-strong: #050a06;
+  --site-surface-soft: #122115;
+  --site-border: #1a3320;
+  --site-border-strong: #24472c;
+  --site-text: #c2cfc6;
+  --site-muted: #758c7c;
+  --site-primary: #10b981;
+  --site-primary-strong: #34d399;
+  --site-secondary: #059669;
+}
+
+[data-md-color-scheme="default"] {
+  --site-bg: #f8faf9;
+  --site-surface: #ffffff;
+  --site-surface-strong: #f8faf9;
+  --site-surface-soft: #f0f4f1;
+  --site-border: #d1ddd5;
+  --site-border-strong: #9fb3a6;
+  --site-text: #1a241e;
+  --site-muted: #536b5b;
+  --site-primary: #059669;
+  --site-primary-strong: #047857;
+  --site-secondary: #10b981;
+}
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  background: var(--site-bg);
+  color: var(--site-text);
+}
+
+body[data-md-color-scheme="slate"] {
+  background: var(--site-bg);
+}
+
+.md-typeset,
+.md-nav,
+.md-search__form,
+.md-search-result {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+code,
+kbd,
+pre,
+.md-typeset code,
+.md-typeset pre,
+.md-typeset .highlight,
+.md-header__topic {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.md-header,
+.md-tabs {
+  background: var(--site-surface-strong);
+  border-bottom: 1px solid var(--site-border);
+}
+
+.md-tabs {
+  box-shadow: none;
+}
+
+.md-search__form,
+.md-search-result,
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset .tabbed-set {
+  border: 1px solid var(--site-border);
+  border-radius: 0;
+  background: var(--site-surface-soft);
+  box-shadow: none;
+}
+
+.md-main__inner {
+  margin-top: 1rem;
+}
+
+.md-content__inner,
+.md-sidebar__scrollwrap,
+.md-nav--primary .md-nav__title,
+.md-nav--lifted > .md-nav__list > .md-nav__item > .md-nav__link {
+  color: var(--site-text);
+}
+
+.md-content__inner {
+  padding-bottom: 3rem;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  letter-spacing: -0.02em;
+  color: var(--site-text);
+}
+
+.md-typeset h1 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--site-primary);
+  display: inline-block;
+}
+
+.md-typeset h2 {
+  margin-top: 2.8rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px dashed var(--site-border-strong);
+}
+
+.md-typeset p,
+.md-typeset li,
+.md-typeset td,
+.md-typeset th {
+  color: var(--site-text);
+}
+
+.md-typeset a,
+.md-nav__link:hover,
+.md-tabs__link:hover {
+  color: var(--site-primary);
+}
+
+.md-typeset a {
+  text-decoration-thickness: 0.08em;
+}
+
+.md-typeset hr {
+  border-bottom-color: var(--site-border);
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--site-border);
+  border-radius: 0;
+  background: var(--site-surface);
+  box-shadow: none;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--site-surface-soft);
+  color: var(--site-text);
+  border-bottom: 1px solid var(--site-border-strong);
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--site-surface-soft);
+}
+
+.md-typeset .highlight pre,
+.md-typeset pre > code {
+  background: var(--site-surface);
+  border-radius: 0;
+  border: 1px solid var(--site-border);
+}
+
+.md-typeset .highlight,
+.md-typeset pre {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.md-typeset code {
+  border-radius: 2px;
+  background: var(--site-surface-soft);
+}
+
+/* Writeup page styles (used by individual writeup pages) */
+.writeup-hero,
+.writeup-panel {
+  margin: 0 0 2rem;
+  padding: 0;
+  border: none;
+  border-left: 2px solid var(--site-border-strong);
+  padding-left: 1rem;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  animation: none;
+}
+
+.writeup-title {
+  margin: 0;
+  border-bottom: none;
+}
+
+.writeup-deck {
+  color: var(--site-muted);
+  margin: 0.4rem 0 0;
+}
+
+.meta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.2rem;
+}
+
+.meta-card {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--site-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.meta-card strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.98rem;
+  color: var(--site-text);
+}
+
+.writeup-panel {
+  margin: 1.5rem 0;
+}
+
+.terminal-note {
+  border-left: 2px solid var(--site-primary);
+  padding-left: 1rem;
+  background: transparent;
+  margin: 1em 0;
+}
+
+.md-footer {
+  background: var(--site-surface-strong);
+  border-top: 1px solid var(--site-border);
+}
