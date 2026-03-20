@@ -8,6 +8,7 @@ edit_uri: ""
 nav:
   - Home: index.md
   - Repository: repository.md
+  - Vulnerability Research: vulnerability-research/index.md
   - CyberEDU: cyberedu/index.md
   - Hack The Box: HackTheBox/index.md
   - HTB University 2025: HackTheBox-University2025/index.md

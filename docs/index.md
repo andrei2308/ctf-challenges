@@ -12,6 +12,12 @@ A curated archive of challenge solutions across binary exploitation, reverse eng
 - **Focus Areas:** 6 (Pwn, reversing, web, crypto, forensics, and OSINT)
 - **Writeup Style:** Practical (Exploit path, tooling, pitfalls, and verification details over filler)
 
+## Vulnerability Research
+
+In addition to CTF writeups, this site now includes a dedicated vulnerability research track for real-world bug analysis, root-cause writeups, patch diffing, exploitability assessment, and case-study style reporting.
+
+[Open the vulnerability research section](./vulnerability-research/index.md)
+
 ## Featured Writeups
 
 - **[Substrate](./unbreakable2026/substrate/writeup.md) (Reverse Engineering):** Windows user-mode and kernel-mode reversing, string recovery via Unicorn emulation, and matrix inversion over modulo 256.
