@@ -356,6 +356,13 @@ code, kbd, pre,
 
 .console-hero { margin: 0.4rem 0 2.2rem; }
 
+.console-404 { max-width: 720px; margin: 2.5rem auto; }
+.console-404 .term__screen { max-height: none; }
+.term__live.term__live--err { color: var(--site-amber); }
+.term__live.term__live--err b { background: var(--site-amber); box-shadow: 0 0 8px rgba(255, 181, 71, 0.6); animation: none; }
+.console-404__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.3rem; }
+.md-typeset .console-404__actions .md-button { margin: 0; }
+
 .console-hero .eyebrow {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.74rem;
