@@ -58,6 +58,9 @@ extra:
       link: https://github.com/andrei2308
       name: GitHub profile
 
+hooks:
+  - hooks/latest.py
+
 extra_css:
   - assets/stylesheets/extra.css
 

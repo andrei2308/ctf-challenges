@@ -36,6 +36,10 @@ hide:
   <div class="stat"><p class="stat__num">6</p><p class="stat__label">Focus areas</p></div>
 </div>
 
+<p class="section-eyebrow">Recent activity</p>
+
+<!-- LATEST_WRITEUPS -->
+
 <p class="section-eyebrow">Start here</p>
 
 <div class="grid cards" markdown>

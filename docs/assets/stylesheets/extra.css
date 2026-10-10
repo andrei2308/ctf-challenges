@@ -484,6 +484,46 @@ code, kbd, pre,
 }
 
 /* ===========================================================================
+   LANDING — recent activity list
+   =========================================================================== */
+.md-typeset .recent {
+  list-style: none;
+  margin: 0.5rem 0 1rem;
+  padding: 0;
+  border: 1px solid var(--site-border);
+  background: var(--site-surface);
+}
+.md-typeset .recent li { margin: 0; border-top: 1px solid var(--site-border); }
+.md-typeset .recent li:first-child { border-top: none; }
+.md-typeset .recent a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.68rem 1rem;
+  color: var(--site-text);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease),
+    border-color 0.15s var(--ease);
+}
+.md-typeset .recent a:hover {
+  background: var(--site-surface-soft);
+  color: var(--site-primary);
+  border-left-color: var(--site-primary);
+}
+.recent__name { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.recent__meta {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--site-muted);
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ===========================================================================
    LANDING — section labels + cards
    =========================================================================== */
 .section-eyebrow {
