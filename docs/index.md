@@ -19,7 +19,7 @@ hide:
 <div class="term-line term-ok">[ 0.001 ] initializing operator console ............. ok</div>
 <div class="term-line term-ok">[ 0.014 ] mounting /writeups ................ 85 entries ok</div>
 <div class="term-line term-ok">[ 0.027 ] tracks: pwn rev web crypto forensics osint .. ok</div>
-<div class="term-line term-ok">[ 0.041 ] vuln-research ................. 1 CVE published</div>
+<div class="term-line term-ok">[ 0.041 ] indexing categories & tags ............ ok</div>
 <div class="term-line term-dim">[ 0.055 ] link established // phosphor green</div>
 <div class="term-line term-ready">ready. type `help` for commands, or scroll to browse.</div>
 </div>
@@ -34,7 +34,6 @@ hide:
   <div class="stat"><p class="stat__num">85<span class="unit">+</span></p><p class="stat__label">Writeups</p></div>
   <div class="stat"><p class="stat__num">8</p><p class="stat__label">Platforms</p></div>
   <div class="stat"><p class="stat__num">6</p><p class="stat__label">Focus areas</p></div>
-  <div class="stat"><p class="stat__num">1</p><p class="stat__label">CVE published</p></div>
 </div>
 
 <p class="section-eyebrow">Start here</p>
@@ -45,7 +44,7 @@ hide:
 
     ---
 
-    Real-world bug analysis: root-cause writeups, patch diffing, exploitability assessment, and CVE case studies — including a published RouterOS SSH auth-bypass.
+    Real-world bug analysis: root-cause writeups, patch diffing, exploitability assessment, and case-study-style reporting on real targets.
 
     [:octicons-arrow-right-24: Open the track](./vulnerability-research/index.md)
 

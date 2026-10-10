@@ -159,7 +159,7 @@
       ["[ 0.001 ] initializing operator console ............. ok", "term-ok"],
       ["[ 0.014 ] mounting /writeups ................ 85 entries ok", "term-ok"],
       ["[ 0.027 ] tracks: pwn rev web crypto forensics osint .. ok", "term-ok"],
-      ["[ 0.041 ] vuln-research ................. 1 CVE published", "term-ok"],
+      ["[ 0.041 ] indexing categories & tags ............ ok", "term-ok"],
       ["[ 0.055 ] link established // phosphor green", "term-dim"]
     ];
 
