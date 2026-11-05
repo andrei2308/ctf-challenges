@@ -2,9 +2,7 @@
 
 A progression-oriented archive of classic binary exploitation problems. This section works best as a structured path from introductory memory corruption into multi-step input, architecture, and ROP challenges.
 
-**10 Writeups** · Beginner · Intermediate · Advanced · Binary Exploitation
-
----
+<!-- EVENT_META -->
 
 ## Beginner Level
 
@@ -36,5 +34,3 @@ Later-stage challenges built around ROP, probability abuse, and more careful con
 |-----------|-------------|
 | [HorCruxes](./pwnable-horcruxes/description/) | Return-oriented programming with a more structured chain. |
 | [Lotto](./pwnable-lotto/description/) | Probability manipulation and repeated-state abuse. |
-
-[Back to Home](../index.md)

@@ -2,9 +2,7 @@
 
 Broadest coverage in the repository, spanning web, pwn, OSINT, mobile, steganography, AI, and network analysis. This event is the best entry point if you want range rather than depth in a single category.
 
-**16 Writeups** · Web · Pwn · OSINT · Mobile · AI
-
----
+<!-- EVENT_META -->
 
 ## Cryptography
 
@@ -63,5 +61,3 @@ A mixed set that shows range: packet analysis, model-adjacent abuse, jail escape
 | [jail](./jail/writeup/) | Misc | Python jail escape through submodule discovery and runtime abuse. |
 | [clanker-casino](./clanker-casino/writeup/) | Misc | Captcha bypass with pragmatic automation. |
 | [echoes-of-the-past](./echoes-of-the-past/writeup/) | Stego | Metadata plus RMS-energy analysis to recover hidden signal. |
-
-[Back to Home](../index.md)

@@ -2,9 +2,7 @@
 
 Smaller than the 2026 archive, but still a useful cross-section of number-theory work, web exploitation, and OSINT. This section is concise enough to browse end to end in one sitting.
 
-**4 Writeups** · Mathematical · Web · OSINT
-
----
+<!-- EVENT_META -->
 
 ## Mathematical
 
@@ -30,5 +28,3 @@ Open-source investigation with an exfiltration-analysis angle.
 | Challenge | Description |
 |-----------|-------------|
 | [exfill-very funny](./exfill-very%20funny/description/) | Data exfiltration analysis through public artifacts and clues. |
-
-[Back to Home](../index.md)

@@ -1,24 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="console-hero console-404">
-<p class="eyebrow">operator console · <b>error</b></p>
-<div class="term hud-notch">
-<div class="term__bar">
-<span class="term__dots"><i></i><i></i><i></i></span>
-<span class="term__title">andrei@ctf : ~/404</span>
-<span class="term__live term__live--err"><b></b>OFFLINE</span>
-</div>
+<div class="lost">
+<div class="term">
+<div class="term__bar"><span><b>andrei</b>@ctf</span><span>zsh</span></div>
 <div class="term__screen">
-<div class="term-line term-cmdline">andrei@ctf:~$ cat $REQUESTED_PATH</div>
-<div class="term-line term-err">error 404 — the requested path was not found.</div>
-<div class="term-line term-dim">the writeup may have moved, been renamed, or never existed.</div>
-<div class="term-line term-ready">↳ use the navigation above, or return to base.</div>
+<div class="term-line term-cmd">cd $REQUESTED_PATH</div>
+<div class="term-line term-err">cd: no such file or directory</div>
+<div class="term-line term-dim">this page moved, was renamed, or never existed.</div>
 </div>
 </div>
-<p class="console-404__actions">
-<a class="md-button md-button--primary" href="{{ base_url }}/">return home</a>
-<a class="md-button" href="{{ base_url }}/repository/">repository overview</a>
+<p class="lost__actions">
+<a class="md-button md-button--primary" href="{{ base_url }}/">Go home</a>
+<a class="md-button" href="{{ base_url }}/ctfs/">Browse CTFs</a>
 </p>
 </div>
 {% endblock %}

@@ -1,22 +1,20 @@
-site_name: Andrei's CTF Writeups
+site_name: andrei
 site_url: https://andrei2308.github.io/ctf-challenges/
-site_description: Curated CTF writeups focused on binary exploitation, reverse engineering, web, and cryptography.
-repo_url: https://github.com/andrei2308/ctf-challenges
-repo_name: andrei2308/ctf-challenges
+site_description: CTF writeups and vulnerability research by andrei. Web, reverse engineering, binary exploitation.
+site_author: andrei
 edit_uri: ""
+copyright: Writeups cover retired or publishable challenges and are for educational use.
 
+# The CTFs entry is expanded at build time by hooks/site.py into one section
+# per event with all of its writeups. Add events in the EVENTS list there.
 nav:
   - Home: index.md
-  - Repository: repository.md
-  - Vulnerability Research: vulnerability-research/index.md
-  - CyberEDU: cyberedu/index.md
-  - Hack The Box: HackTheBox/index.md
-  - HTB University 2025: HackTheBox-University2025/index.md
-  - pwnable.kr: pwnable.kr/index.md
-  - ROCSC 2025: rocsc2025/index.md
-  - ROCSC 2026: rocsc2026/index.md
-  - Unbreakable 2026: unbreakable2026/index.md
-  - ISM CTF 2025: ismctf2025/crackmeifyoucan/description.md
+  - CTFs: ctfs/index.md
+  - Vuln Research:
+      - vulnerability-research/index.md
+      - OpenSSL PKCS12 MAC DoS: vulnerability-research/openssl-pkcs12-mac-iteration-dos.md
+  - Achievements: achievements.md
+  - whoami: whoami.md
 
 theme:
   name: material
@@ -26,24 +24,15 @@ theme:
   font: false
   palette:
     - scheme: slate
-      primary: black
-      accent: green
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-    - scheme: default
-      primary: teal
-      accent: green
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+      primary: custom
+      accent: custom
   features:
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
-    - navigation.top
     - navigation.indexes
+    - navigation.path
+    - navigation.footer
+    - navigation.top
     - toc.follow
     - search.suggest
     - search.highlight
@@ -53,13 +42,14 @@ theme:
     - content.tabs.link
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/andrei2308
-      name: GitHub profile
+      name: GitHub
 
 hooks:
-  - hooks/latest.py
+  - hooks/site.py
 
 extra_css:
   - assets/stylesheets/extra.css

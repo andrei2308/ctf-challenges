@@ -2,9 +2,7 @@
 
 Platform writeups covering a compact but varied set of challenges across blockchain, cryptography, pwn, reversing, and web. This section reads more like a curated selection than a full archive.
 
-**11 Writeups** · Blockchain · Crypto · Pwn · Reversing · Web
-
----
+<!-- EVENT_META -->
 
 ## Blockchain
 
@@ -51,5 +49,3 @@ Application-layer exploitation with a small but useful pair of targets.
 |-----------|-------------|
 | [FlagCommand](./web/FlagCommand/description/) | Command execution or application logic abuse in a constrained web target. |
 | [Spookifier](./web/Spookifier/description/) | Reserved writeup page for a web challenge already represented in the archive. |
-
-[Back to Home](../index.md)

@@ -2,9 +2,7 @@
 
 Competition writeups from the HTB university event, centered on binary exploitation, reversing, web, and forensic investigation with a tighter challenge count and more direct solves.
 
-**8 Writeups** · Forensics · Pwn · Reverse Engineering · Web
-
----
+<!-- EVENT_META -->
 
 ## Forensics
 
@@ -41,5 +39,3 @@ Smaller web section, but useful for balancing the event against the binary-heavy
 | Challenge | Description |
 |-----------|-------------|
 | [dead_route](./web/dead_route/description/) | Routing abuse and request-handling weaknesses in a focused web target. |
-
-[Back to Home](../index.md)

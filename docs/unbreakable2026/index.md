@@ -2,9 +2,7 @@
 
 Selected writeups from the Unbreakable qualification phase, with the strongest material concentrated in reverse engineering, web exploitation, threat hunting, and low-level memory corruption.
 
-**9 Writeups** · Reverse Engineering · Web · Threat Hunting · Pwn
-
----
+<!-- EVENT_META -->
 
 ## Forensics and Cryptography
 
@@ -51,5 +49,3 @@ The strongest section in this event, ranging from custom crypto analysis to heav
 | [jumpy](./jumpy/writeup/) | Custom encryption reversal with a clearer dataflow reconstruction. |
 | [substrate](./substrate/writeup/) | Obfuscated Windows binary and driver analysis with dynamic string recovery and matrix inversion. |
 | [the-flag-is-a-lie](./the-flag-is-a-lie/writeup/) | Unity game reverse engineering with asset and logic inspection. |
-
-[Back to Home](../index.md)

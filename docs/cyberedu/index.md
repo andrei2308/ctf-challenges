@@ -2,9 +2,7 @@
 
 The broadest training-oriented section in the repository, with especially strong density in pwn. It works well as a progression path from fundamentals into more specialized binary exploitation techniques.
 
-**27 Writeups** · Pwn Heavy · Crypto · Forensics · Web · Stego
-
----
+<!-- EVENT_META -->
 
 ## Cryptography
 
@@ -81,5 +79,3 @@ Smaller application-security subset focused on reconnaissance and protocol abuse
 | [http-for-pros](./web/http-for-pros/description/) | HTTP-layer exploitation with SSTI and payload construction. |
 | [reccon](./web/reccon/description/) | Web reconnaissance and attack-surface mapping. |
 | [ultra-crawl](./web/ultra-crawl/description/) | Crawling and automated analysis against a larger target surface. |
-
-[Back to Home](../index.md)

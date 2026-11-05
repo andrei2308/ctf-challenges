@@ -1,125 +1,68 @@
 ---
+title: Home
 hide:
-  - toc
   - navigation
+  - toc
 ---
 
-<h1 class="sr-only">Andrei — Security Research &amp; CTF Writeups</h1>
-
-<div class="console-hero">
-<p class="eyebrow">operator console · <b>andrei @ ctf</b> · security-research</p>
-<div class="term hud-notch">
-<div class="term__bar">
-<span class="term__dots"><i></i><i></i><i></i></span>
-<span class="term__title">andrei@ctf : ~/security-research</span>
-<span class="term__live"><b></b>ONLINE</span>
+<section class="hero" aria-label="Introduction">
+<div class="hero__copy">
+<h1 class="hero__name"><ruby>Andrei<rt>アンドレイ</rt></ruby></h1>
+<p class="hero__lede">I play CTFs, mostly web, reverse engineering and binary exploitation, and write up how each challenge was solved, dead ends included. Real-world vulnerability research lives here too.</p>
 </div>
-<div class="term__screen" id="term-screen">
-<div class="term-line term-cmdline">andrei@ctf:~/security-research$ ./boot</div>
-<div class="term-line term-ok">[ 0.001 ] initializing operator console ............. ok</div>
-<div class="term-line term-ok">[ 0.014 ] mounting /writeups ................ 85 entries ok</div>
-<div class="term-line term-ok">[ 0.027 ] tracks: pwn rev web crypto forensics osint .. ok</div>
-<div class="term-line term-ok">[ 0.041 ] indexing categories & tags ............ ok</div>
-<div class="term-line term-dim">[ 0.055 ] link established // phosphor green</div>
-<div class="term-line term-ready">ready. type `help` for commands, or scroll to browse.</div>
+<div class="term" id="term">
+<div class="term__bar"><span><b>andrei</b>@ctf</span><span>zsh</span></div>
+<div class="term__screen" id="term-screen" aria-live="polite">
+<div class="term-line term-cmd">whoami</div>
+<div class="term-line">andrei. ctf player, vulnerability researcher.</div>
+<div class="term-line term-cmd">ls</div>
+<div class="term-line term-dir">ctfs/  vuln-research/  achievements/  whoami/</div>
 </div>
 <form class="term__form" id="term-form" hidden autocomplete="off">
-<span class="term__prompt">$</span>
-<input class="term__input" id="term-cmd" type="text" spellcheck="false" aria-label="terminal command" placeholder="type `help` then press enter">
+<label class="term__prompt" for="term-cmd">~ $</label>
+<input class="term__input" id="term-cmd" type="text" spellcheck="false" autocapitalize="off" placeholder="try: help">
 </form>
 </div>
-</div>
+<span class="hero__spine" aria-hidden="true">セキュリティ研究</span>
+</section>
 
-<div class="stats">
-  <div class="stat"><p class="stat__num">85<span class="unit">+</span></p><p class="stat__label">Writeups</p></div>
-  <div class="stat"><p class="stat__num">8</p><p class="stat__label">Platforms</p></div>
-  <div class="stat"><p class="stat__num">6</p><p class="stat__label">Focus areas</p></div>
-</div>
+<nav class="doors" aria-label="Sections">
+<a class="door" href="ctfs/"><span class="seal" aria-hidden="true">記録</span><span class="door__name">CTFs</span><span class="door__desc"><!-- CTF_COUNT --> writeups from <!-- EVENT_COUNT --> competitions and training platforms.</span></a>
+<a class="door" href="vulnerability-research/"><span class="seal" aria-hidden="true">研究</span><span class="door__name">Vuln Research</span><span class="door__desc">Root-cause analysis of bugs in real software.</span></a>
+<a class="door" href="achievements/"><span class="seal" aria-hidden="true">実績</span><span class="door__name">Achievements</span><span class="door__desc">Top 10 at the ROCSC 2026 and Unbreakable qualifiers.</span></a>
+<a class="door" href="whoami/"><span class="seal" aria-hidden="true">自己紹介</span><span class="door__name">whoami</span><span class="door__desc">Who writes this, and how the writeups are made.</span></a>
+</nav>
 
-<p class="section-eyebrow">Recent activity</p>
-
-<!-- LATEST_WRITEUPS -->
-
-<p class="section-eyebrow">Start here</p>
-
-<div class="grid cards" markdown>
-
--   :material-bug-outline:{ .lg .middle } __Vulnerability research__
-
-    ---
-
-    Real-world bug analysis: root-cause writeups, patch diffing, exploitability assessment, and case-study-style reporting on real targets.
-
-    [:octicons-arrow-right-24: Open the track](./vulnerability-research/index.md)
-
--   :material-flag-checkered:{ .lg .middle } __ROCSC 2026__
-
-    ---
-
-    The broadest section in the archive — web, pwn, OSINT, mobile, and AI-themed challenges. Best entry point if you want range over depth.
-
-    [:octicons-arrow-right-24: View writeups](./rocsc2026/index.md)
-
--   :material-shield-search:{ .lg .middle } __Unbreakable 2026__
-
-    ---
-
-    Reverse engineering, web, threat hunting, forensics, and heap-focused binary exploitation from the latest event.
-
-    [:octicons-arrow-right-24: View writeups](./unbreakable2026/index.md)
-
-</div>
-
-<p class="section-eyebrow">Browse by platform</p>
-
-<div class="grid cards" markdown>
-
--   :material-school-outline:{ .lg .middle } __CyberEDU__
-
-    ---
-
-    Broad category coverage with a strong pwn core and useful foundational exercises.
-
-    [:octicons-arrow-right-24: CyberEDU](./cyberedu/index.md)
-
--   :material-cube-outline:{ .lg .middle } __Hack The Box__
-
-    ---
-
-    Selected writeups across web, crypto, reversing, blockchain, and binary exploitation.
-
-    [:octicons-arrow-right-24: Hack The Box](./HackTheBox/index.md)
-
--   :material-school:{ .lg .middle } __HTB University 2025__
-
-    ---
-
-    University-focused event coverage with practical pwn, reverse engineering, and web tasks.
-
-    [:octicons-arrow-right-24: HTB University 2025](./HackTheBox-University2025/index.md)
-
--   :material-memory:{ .lg .middle } __pwnable.kr__
-
-    ---
-
-    Progressive exploitation challenges, from entry-level overflows to structured ROP tasks.
-
-    [:octicons-arrow-right-24: pwnable.kr](./pwnable.kr/index.md)
-
--   :material-flag-outline:{ .lg .middle } __ROCSC 2025__
-
-    ---
-
-    Compact set of writeups across math-heavy tasks, OSINT, and steganography.
-
-    [:octicons-arrow-right-24: ROCSC 2025](./rocsc2025/index.md)
-
--   :material-folder-search-outline:{ .lg .middle } __Repository overview__
-
-    ---
-
-    How this archive is organised, the categories it covers, and the methodology behind each writeup.
-
-    [:octicons-arrow-right-24: Repository](./repository.md)
-
-</div>
+<figure class="nightscape" role="img" aria-label="ASCII art: city rooftops at night, power lines crossing a full moon, a cat asleep on a roof, one window lit green.">
+<pre aria-hidden="true">    <i class="s">`</i>                                                                 <i class="s">`</i>          <i class="s">`</i>
+                    <i class="s">`</i>   <i class="s">.</i>                                                                    <i class="s">'</i>                     <i class="s">.</i>  <i class="m">=+++*********</i>                   <i class="s">'</i>
+<i class="s">.</i>    <i class="s">+</i>                                           <i class="s">'</i>        <i class="s">.</i>                               <i class="s">.</i>                 <i class="s">`</i>   <i class="s">.</i>  <i class="m">==++***%%%%%%%%%%%*</i>
+         <i class="s">.</i>           <i class="s">.</i>             <i class="s">.</i>                                                                  <i class="s">+</i>          <i class="m">-=+++***%%%%########%%%</i>           <i class="s">'</i>
+          <i class="s">.</i>                                                                                                    <i class="m">:-==++***%%%%###########%%*</i>
+                <i class="s">`</i>                                                          <i class="s">`.</i>                                 <i class="m">.--=+++*===%%%####++++####%%*</i>
+          <i class="s">.</i>                                                                                                   <i class="m">:-==+++=====%%%###########%%*</i>   <i class="s">.</i> <i class="s">.</i>
+                                    <i class="s">.</i>   <i class="s">`</i>          <i class="s">.</i>         <i class="s">.</i> <i class="s">.</i>               <i class="s">.</i>      <i class="s">.</i>                      <i class="m">.:--==++*===%%%%%##########%%*+</i>                  <i class="w">__</i>
+                    <i class="p">^</i>                                            <i class="s">.</i>                    <i class="s">.</i>   <i class="p">^</i>        <i class="s">'</i>         <i class="m">.:--==+++****%%%%++++###%%%%%*+</i>       <i class="w">______----___</i>
+ <i class="s">.</i><i class="w">________--___</i><i class="p">o</i><i class="w">____</i><i class="p">|</i><i class="w">----</i><i class="p">o</i><i class="w">---___</i>                                                <i class="w">___--</i><i class="p">o</i><i class="w">---_</i><i class="p">|</i><i class="w">_---</i><i class="p">o</i><i class="w">------__________</i><i class="m">--==+++*****%======</i><i class="w">____________________------</i>  <i class="s">.</i>
+<i class="w">------------</i>   <i class="p">=====+=====</i><i class="w">__</i>    <i class="w">----____</i>           <i class="s">.</i>         <i class="s">.</i>           <i class="w">____---</i> <i class="w">____</i><i class="p">=====+=====</i>      <i class="w">---------------------------------------</i>
+  <i class="w">________-----</i><i class="p">o</i><i class="w">--__</i><i class="p">|</i>    <i class="p">o</i>  <i class="w">----______</i>  <i class="w">------______________</i> <i class="w">______________------__--</i><i class="p">o</i>    <i class="p">|</i>    <i class="p">o</i>  <i class="s">'</i>            <i class="m">.::---===+---***********++=</i>
+<i class="w">--</i>             <i class="p">=====+=====</i>  <i class="s">.</i>         <i class="w">-------------------------</i>             <i class="w">___--</i>    <i class="p">=====+=====</i>       <i class="s">.</i>         <i class="m">.::---====++++++++++++=</i>                <i class="s">.</i>    <i class="s">.</i>
+                    <i class="p">|</i>    <i class="w">---____</i>     <i class="s">.</i>                               <i class="w">____---</i>              <i class="p">|</i>                      <i class="s">.</i> <i class="m">.::-----==========-</i>        <i class="s">'</i>       <i class="s">`</i>
+                    <i class="p">|</i>           <i class="w">----_______</i>               <i class="w">_______----</i>                     <i class="p">|</i>                           <i class="m">..::::------:</i>         <i class="c">/\_/\</i>
+     <i class="s">.</i>              <i class="p">|</i>                      <i class="w">---------------</i><i class="s">.</i>                               <i class="p">|</i>    <i class="s">.</i>   <i class="s">+</i>                                       <i class="c">(</i> <i class="c">-.-</i> <i class="c">)</i>
+                    <i class="p">|</i>                              <i class="b">__________</i>                             <i class="p">|</i>                                                 <i class="c">&gt;</i> <i class="c">^</i> <i class="c">&lt;</i>
+                    <i class="p">|</i>                              <i class="b">|</i>        <i class="b">|</i>                             <i class="p">|</i>                                           <i class="b">_____________</i>
+                    <i class="p">|</i>                              <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>   <i class="b">|</i>                            <i class="b">_______________</i>                              <i class="b">|</i>           <i class="b">|</i>
+            <i class="b">________________</i>                       <i class="b">|</i>        <i class="b">|</i>                            <i class="b">|</i>             <i class="b">|</i>                              <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">|</i>
+            <i class="b">|</i>              <i class="b">|</i>                       <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>   <i class="b">|</i>                            <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="l">#</i>  <i class="b">.</i>  <i class="b">|</i>            <i class="b">__________</i>        <i class="b">|</i>           <i class="b">|</i>
+            <i class="b">|</i> <i class="b">.</i>  <i class="l">#</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">|</i>        <i class="b">______________</i> <i class="b">|</i>        <i class="b">|</i>                            <i class="b">|</i>             <i class="b">|</i>            <i class="b">|</i>        <i class="b">|</i>        <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">|</i>
+            <i class="b">|</i>              <i class="b">|</i>        <i class="b">|</i>            <i class="b">|</i> <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>   <i class="b">|__________________</i>          <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="l">#</i>  <i class="b">|</i>            <i class="b">|</i> <i class="b">.</i>  <i class="l">#</i>   <i class="b">|</i>        <i class="b">|</i>           <i class="b">|___________</i>
+<i class="b">___________</i> <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">|</i>        <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i> <i class="b">|</i> <i class="b">|</i>        <i class="b">||</i>                <i class="b">|</i>          <i class="b">|</i>             <i class="b">|____________|</i>        <i class="b">|</i>        <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">||</i>         <i class="b">|</i>
+<i class="b">|</i>         <i class="b">|</i> <i class="b">|</i>              <i class="b">|</i>        <i class="b">|</i>            <i class="b">|</i> <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>   <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="l">#</i>  <i class="b">.</i>  <i class="b">|_________</i> <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">||</i>          <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>   <i class="b">|</i>        <i class="b">|</i>           <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i> <i class="b">|</i> <i class="b">_</i>
+<i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i> <i class="b">|</i> <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">|________|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i> <i class="b">|</i> <i class="b">|</i>        <i class="b">||</i>                <i class="b">||</i>       <i class="b">|</i> <i class="b">|</i>             <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">||</i>        <i class="b">|</i>        <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">||</i>         <i class="b">|</i> <i class="b">|</i>
+<i class="b">|</i>         <i class="b">|</i> <i class="b">|</i>              <i class="b">||</i>      <i class="b">||</i>            <i class="b">|</i> <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>   <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">||</i> <i class="b">.</i>  <i class="l">#</i>  <i class="b">|</i> <i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="l">#</i>  <i class="b">||</i>          <i class="b">||</i> <i class="b">.</i>  <i class="l">#</i>   <i class="b">|</i> <i class="b">_______|</i>           <i class="b">||</i> <i class="g">#</i>  <i class="l">#</i>  <i class="l">#</i> <i class="b">|</i> <i class="b">|</i>
+<i class="b">|</i> <i class="b">.</i>  <i class="b">.</i>  <i class="l">#</i> <i class="b">|</i> <i class="b">|</i> <i class="l">#</i>  <i class="l">#</i>  <i class="b">.</i>  <i class="l">#</i>   <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i> <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i> <i class="b">|</i> <i class="b">|</i>        <i class="b">||</i>                <i class="b">||</i>       <i class="b">|</i> <i class="b">|</i>             <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">||</i>        <i class="b">|</i> <i class="b">|</i>     <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>   <i class="b">||</i>         <i class="b">|</i> <i class="b">|</i>
+<i class="b">|</i>         <i class="b">|</i> <i class="b">|</i>              <i class="b">||</i>      <i class="b">||</i>            <i class="b">|</i> <i class="b">|</i> <i class="b">.</i>  <i class="l">#</i>   <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="l">#</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="b">|</i> <i class="b">|</i> <i class="l">#</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">.</i>  <i class="b">||</i>          <i class="b">||</i> <i class="b">.</i>  <i class="l">#</i>   <i class="b">|</i> <i class="b">|</i> <i class="b">.</i>   <i class="b">||</i>           <i class="b">||</i> <i class="b">.</i>  <i class="b">.</i>  <i class="l">#</i> <i class="b">|</i> <i class="b">|</i>
+<i class="b">|_________|_|______________||______||____________|_|________||________________||_______|_|_____________||__________||________|_|_____||___________||_________|_|</i></pre>
+<figcaption><span lang="ja">今夜もデバッグ中。</span> debugging again tonight.</figcaption>
+</figure>
